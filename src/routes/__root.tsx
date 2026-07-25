@@ -81,12 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Research site of Thomas Amo Kyeimiah — atmospheric scientist and climate data scientist working on climate modelling, machine learning, and geospatial analysis.",
+          "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall.",
       },
       { name: "author", content: "Thomas Amo Kyeimiah" },
       { property: "og:site_name", content: "Thomas Amo Kyeimiah" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Thomas Amo Kyeimiah — Atmospheric & Climate Data Scientist" },
+      { name: "twitter:title", content: "Thomas Amo Kyeimiah — Atmospheric & Climate Data Scientist" },
+      { property: "og:description", content: "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall." },
+      { name: "twitter:description", content: "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/de0bfcab-54a7-445b-a5a6-2ab6e5bff965" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/de0bfcab-54a7-445b-a5a6-2ab6e5bff965" },
     ],
     links: [
       {

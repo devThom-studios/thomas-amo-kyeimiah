@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Research, publications, and projects on the physical climate system, machine learning, and African rainfall.",
+          "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall.",
       },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "/" },
