@@ -48,10 +48,12 @@ function Home() {
             Thomas Amo Kyeimiah
           </h1>
           <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-foreground/85">
-            I study the physical climate system with a focus on the West African
-            monsoon, land–atmosphere interactions, and machine-learning methods for
-            Earth system science. My work combines high-resolution climate
-            modelling, causal inference, and open, reproducible tooling.
+            I am an atmospheric and climate data scientist, recently graduated
+            with an M.Sc. in Atmospheric and Oceanic Sciences from McGill
+            University. My work focuses on sea-ice and polar climate,
+            hydroclimatology, and the evaluation of CMIP6 and reanalysis
+            datasets — combining physical intuition with reproducible Python
+            workflows and machine-learning methods for Earth system science.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
