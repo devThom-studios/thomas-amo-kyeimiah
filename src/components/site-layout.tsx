@@ -75,9 +75,9 @@ function SiteFooter() {
         <div>
           <p className="font-serif text-lg text-navy-deep">Thomas Amo Kyeimiah</p>
           <p className="text-muted-foreground mt-2 leading-relaxed">
-            Atmospheric scientist and climate data scientist. Research on the
-            physical climate system, land–atmosphere interactions, and
-            data-driven Earth science.
+            Atmospheric and climate data scientist. M.Sc., McGill University.
+            Sea-ice and polar climate, hydroclimatology, and reproducible
+            Python workflows for Earth system science.
           </p>
         </div>
         <div>
@@ -95,7 +95,7 @@ function SiteFooter() {
         <div>
           <p className="eyebrow mb-3">Elsewhere</p>
           <ul className="space-y-1.5">
-            <li><a href="mailto:thomas.amokyeimiah@example.edu" className="hover-underline">Email</a></li>
+            <li><a href="mailto:kyeimiahthomasamo97@gmail.com" className="hover-underline">Email</a></li>
             <li><a href="https://scholar.google.com" target="_blank" rel="noreferrer" className="hover-underline">Google Scholar</a></li>
             <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover-underline">GitHub</a></li>
             <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover-underline">LinkedIn</a></li>
