@@ -25,46 +25,50 @@ function About() {
     <SiteLayout>
       <PageHero
         eyebrow="About"
-        title="An atmospheric scientist working at the intersection of physics, data, and place."
-        lead="I use climate models, observations, and machine learning to understand how the atmosphere behaves — and how those dynamics matter for the people who live beneath it."
+        title="Atmospheric and climate data scientist working across polar, tropical, and computational climate science."
+        lead="From sea ice on the Labrador coast to malaria transmission in Ghana, I use climate models, reanalyses, and reproducible Python workflows to understand a changing Earth system."
       />
       <section className="container-prose py-20 md:py-28 grid gap-16 md:grid-cols-[2fr_1fr]">
         <div className="space-y-6 text-lg leading-relaxed text-foreground/85 max-w-2xl">
           <p>
-            I am an atmospheric scientist and climate data scientist. My research
-            focuses on the physical dynamics of the West African monsoon, the
-            role of land–atmosphere interactions in regional climate, and the
-            development of physics-constrained machine-learning methods for
-            Earth system modelling.
+            I am a recent M.Sc. graduate in Atmospheric and Oceanic Sciences
+            from McGill University, with a First-Class B.Sc. in Meteorology and
+            Climate Science from Kwame Nkrumah University of Science and
+            Technology (KNUST). My graduate thesis, supervised by Prof. Bruno
+            Tremblay, projected sea-ice conditions in Nunatsiavut (Labrador)
+            using CESM-HR climate model output alongside Canadian Ice Service
+            observations.
           </p>
           <p>
-            My work draws on high-resolution climate simulations, reanalyses,
-            satellite observations, and long station records. I care deeply
-            about how methodological choices — bias correction, downscaling,
-            evaluation — propagate into the conclusions we draw about future
-            climate, and about building open tools that make those choices
-            legible to other researchers.
+            My research sits at the interface of climate dynamics,
+            hydroclimatology, and predictive modelling. I work with large
+            observational, reanalysis, and climate-model datasets to study
+            atmospheric, oceanic, and environmental processes — from CMIP6
+            sea-ice evaluation with Environment and Climate Change Canada to
+            climate–health interactions across Ghana's agro-ecological zones.
           </p>
           <p>
-            Beyond research, I write about climate science for general
-            audiences, mentor students at earlier stages of the pipeline, and
-            contribute to open-source scientific software.
+            I have strong programming and analytical skills in Python, R, and
+            Fortran, and I care about reproducibility, clear scientific
+            communication, and mentoring the next generation of climate
+            scientists. Alongside research, I currently review AI-generated
+            scientific workflows and data visualisations for technical accuracy
+            and reproducibility.
           </p>
           <div className="pt-6 grid sm:grid-cols-2 gap-8">
             <div>
               <p className="eyebrow mb-2">Education</p>
               <ul className="space-y-2 text-base">
-                <li>Ph.D. Candidate, Atmospheric Sciences</li>
-                <li>M.Sc. Meteorology and Climate Science</li>
-                <li>B.Sc. Physics</li>
+                <li>M.Sc. Atmospheric &amp; Oceanic Sciences, McGill University (2024)</li>
+                <li>B.Sc. Meteorology &amp; Climate Science, KNUST (First-Class Honours, 2021)</li>
               </ul>
             </div>
             <div>
               <p className="eyebrow mb-2">Affiliations</p>
               <ul className="space-y-2 text-base">
-                <li>Climate Dynamics Group</li>
-                <li>African Climate & Development Initiative</li>
-                <li>WCRP Early Career Researcher</li>
+                <li>American Geophysical Union (AGU)</li>
+                <li>Ghana Meteorological Society (GhMS)</li>
+                <li>Council of Atmospheric &amp; Oceanic Sciences Student Assoc. (McGill)</li>
               </ul>
             </div>
           </div>

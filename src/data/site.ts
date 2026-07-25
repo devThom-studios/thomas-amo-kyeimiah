@@ -1,63 +1,84 @@
-import sst from "@/assets/research-sst.jpg";
-import abl from "@/assets/research-abl.jpg";
-import monsoon from "@/assets/research-monsoon.jpg";
+import seaice from "@/assets/research-sst.jpg";
+import cmip6 from "@/assets/research-abl.jpg";
+import malaria from "@/assets/research-monsoon.jpg";
 
 export const RESEARCH = [
   {
-    slug: "west-african-monsoon",
-    title: "Dynamics of the West African Monsoon under a warming climate",
-    period: "2023 – present",
-    image: monsoon,
-    imageAlt: "Satellite view of the West African coast with monsoon cloud structures.",
+    slug: "sea-ice-nunatsiavut",
+    title: "Projection of sea-ice conditions in Nunatsiavut (Labrador)",
+    period: "2022 – 2024 · MSc thesis, McGill University",
+    image: seaice,
+    imageAlt: "Arctic sea ice cover along the Labrador coast.",
     summary:
-      "Quantifying how moisture transport, low-level jets, and Sahelian precipitation respond to greenhouse forcing using CMIP6 ensembles and high-resolution regional simulations.",
-    methods: ["CMIP6 downscaling", "WRF regional modelling", "Bayesian emergent constraints"],
-    datasets: ["CMIP6", "ERA5", "CHIRPS", "GPM IMERG"],
+      "Projected changes in landfast and pack ice along the Nunatsiavut coast by combining high-resolution CESM output with Canadian Ice Service in-situ observations, and built a lightweight ERA5 degree-day model of sea-ice onset and melt validated against thickness records.",
+    methods: [
+      "CESM-HR climate-model diagnostics",
+      "Model–observation bias analysis",
+      "ERA5 degree-day sea-ice onset/melt model",
+      "Statistical validation against ice-thickness data",
+    ],
+    datasets: ["CESM-HR", "ERA5", "Canadian Ice Service (CIS) observations"],
     results: [
-      "Detected a robust northward shift of the monsoon rain belt by 1.4° under SSP5-8.5.",
-      "Constrained end-of-century Sahel rainfall change to +7 ± 3 % using an emergent constraint on low-level moisture flux.",
+      "Integrated CESM-HR output with CIS in-situ records to characterise regional bias in ice onset and duration.",
+      "Built and validated a simple degree-day model reproducing observed sea-ice onset and melt seasons in Nunatsiavut.",
     ],
     links: [
+      {
+        label: "Thesis (McGill eScholarship)",
+        href: "https://escholarship.mcgill.ca/concern/theses/kw52jf57r",
+      },
       { label: "Code (GitHub)", href: "https://github.com" },
-      { label: "Preprint", href: "#" },
     ],
   },
   {
-    slug: "sst-teleconnections",
-    title: "Sea-surface temperature teleconnections and African rainfall",
-    period: "2022 – present",
-    image: sst,
-    imageAlt: "Global sea surface temperature anomaly map.",
+    slug: "cmip6-sea-ice-assessment",
+    title: "CMIP6 sea-ice concentration and thickness assessment",
+    period: "2024 · Environment and Climate Change Canada",
+    image: cmip6,
+    imageAlt: "Gridded sea-ice concentration field from a climate model.",
     summary:
-      "Machine-learning attribution of tropical SST patterns to seasonal rainfall variability across sub-Saharan Africa, with a focus on forecast skill on the S2S timescale.",
-    methods: ["Causal discovery (PCMCI)", "Gradient-boosted attribution", "Analog forecasting"],
-    datasets: ["HadISST", "GPCP", "ERA5", "SEAS5 hindcasts"],
+      "Evaluated CMIP6 sea-ice concentration and thickness against observational datasets using Python-based climate data workflows, supporting model diagnostics and inter-model comparison at ECCC.",
+    methods: [
+      "CMIP6 model evaluation",
+      "Bias metrics and skill scores",
+      "Large geospatial data processing with Xarray / Dask",
+      "Cartographic visualisation with Cartopy",
+    ],
+    datasets: ["CMIP6", "NSIDC passive microwave", "Observational sea-ice thickness"],
     results: [
-      "Identified two independent SST modes explaining 61 % of JJAS Sahel rainfall variance since 1980.",
-      "Improved 3-month operational forecast skill (ROC 0.68 → 0.74) in the Guinea Coast region.",
+      "Quantified inter-model spread in Arctic sea-ice concentration and thickness against satellite records.",
+      "Delivered reusable Python workflows for climate diagnostics adopted by the research team.",
     ],
-    links: [
-      { label: "Code (GitHub)", href: "https://github.com" },
-      { label: "Journal article", href: "#" },
-    ],
+    links: [{ label: "Code (GitHub)", href: "https://github.com" }],
   },
   {
-    slug: "boundary-layer-ml",
-    title: "Machine-learned parameterisations of the atmospheric boundary layer",
-    period: "2024 – present",
-    image: abl,
-    imageAlt: "Idealised atmospheric boundary layer profile visualisation.",
+    slug: "malaria-vectorial-capacity",
+    title: "Climate change and malaria vectorial capacity in Ghana",
+    period: "2021 · BSc thesis, KNUST",
+    image: malaria,
+    imageAlt: "Agro-ecological zones of West Africa with temperature overlay.",
     summary:
-      "Neural-network emulators of turbulence closure schemes that preserve conservation laws and remain stable when coupled online to a global atmospheric model.",
-    methods: ["Physics-constrained neural nets", "Online coupling to CAM6", "Adjoint stability analysis"],
-    datasets: ["LES archive (SAM)", "ARM SGP observations", "ERA5"],
+      "Investigated how temperature change affects the vectorial capacity of Anopheles mosquitoes across the agro-ecological zones of Ghana, combining climate data analysis with statistical transmission modelling. Contributed to a peer-reviewed study on warming and mosquito lifespan.",
+    methods: [
+      "Climate–disease statistical modelling",
+      "Zonal comparative analysis",
+      "SIR-type disease-transmission modelling",
+      "Geospatial visualisation",
+    ],
+    datasets: [
+      "Ghana Meteorological Agency station data",
+      "Reanalysis temperature fields",
+      "Entomological survey data",
+    ],
     results: [
-      "Reduced systematic low-cloud bias over the southeast Pacific by 22 %.",
-      "Maintained numerical stability across a 10-year AMIP integration.",
+      "Estimated malaria vectorial capacity across Ghana's agro-ecological zones under changing temperature regimes.",
+      "Winner of the KNUST Final-Year Poster Presentation (2021).",
     ],
     links: [
-      { label: "Code (GitHub)", href: "https://github.com" },
-      { label: "Working paper", href: "#" },
+      {
+        label: "Published article (Infectious Disease Modelling)",
+        href: "https://doi.org/10.1016/j.idm.2025.12.011",
+      },
     ],
   },
 ] as const;
@@ -66,198 +87,200 @@ export const PUBLICATIONS = {
   journal: [
     {
       year: "2025",
-      authors: "Amo Kyeimiah, T., Delworth, T. L., & Boateng, A.",
+      authors: "Yamba, E., Badu, K., Kyeimiah, T. A., et al.",
       title:
-        "Emergent constraints on future West African monsoon rainfall from moisture-flux convergence",
-      venue: "Journal of Climate",
-      details: "38(6), 1421–1440",
-      doi: "10.1175/JCLI-D-24-0187.1",
-      links: [{ label: "DOI", href: "#" }, { label: "PDF", href: "#" }],
-    },
-    {
-      year: "2024",
-      authors: "Amo Kyeimiah, T., & Mensah, K.",
-      title:
-        "Causal drivers of Sahel rainfall variability: a PCMCI analysis of tropical SST modes",
-      venue: "Geophysical Research Letters",
-      details: "51, e2024GL110221",
-      doi: "10.1029/2024GL110221",
-      links: [{ label: "DOI", href: "#" }, { label: "PDF", href: "#" }],
-    },
-    {
-      year: "2023",
-      authors: "Owusu, F., Amo Kyeimiah, T., et al.",
-      title:
-        "Bias correction of CMIP6 precipitation for hydrological impact assessment in the Volta Basin",
-      venue: "Environmental Research Letters",
-      details: "18, 084011",
-      doi: "10.1088/1748-9326/ace1a2",
-      links: [{ label: "DOI", href: "#" }],
+        "Warming temperatures reduce lifespan and vectorial capacity of Anopheles mosquitoes in Ghana",
+      venue: "Infectious Disease Modelling",
+      doi: "10.1016/j.idm.2025.12.011",
+      links: [{ label: "DOI", href: "https://doi.org/10.1016/j.idm.2025.12.011" }],
     },
   ],
   conference: [
     {
-      year: "2025",
-      authors: "Amo Kyeimiah, T.",
-      title: "Physics-constrained boundary-layer emulators for coupled climate models",
-      venue: "AGU Fall Meeting, New Orleans (invited talk)",
-    },
-    {
       year: "2024",
-      authors: "Amo Kyeimiah, T. & Delworth, T. L.",
-      title: "Emergent constraints on the West African monsoon response",
-      venue: "EGU General Assembly, Vienna",
+      authors: "Kyeimiah, T. A.",
+      title:
+        "Projection of sea-ice condition in Nunatsiavut (Labrador) from CESM-HR and observations",
+      venue:
+        "School and Workshop on Polar Climates, International Centre for Theoretical Physics (ICTP), Trieste, Italy",
+      details: "Poster presentation",
     },
   ],
   thesis: [
     {
-      year: "2023",
-      authors: "Amo Kyeimiah, T.",
+      year: "2024",
+      authors: "Kyeimiah, T. A.",
+      title: "Projection of sea-ice condition in Nunatsiavut (Labrador)",
+      venue: "M.Sc. Thesis, Atmospheric and Oceanic Sciences, McGill University",
+      details: "Advisor: Prof. Bruno Tremblay",
+      links: [
+        {
+          label: "eScholarship",
+          href: "https://escholarship.mcgill.ca/concern/theses/kw52jf57r",
+        },
+      ],
+    },
+    {
+      year: "2021",
+      authors: "Kyeimiah, T. A.",
       title:
-        "Data-driven attribution of African rainfall variability to tropical SST forcing",
-      venue: "M.Sc. Thesis, Department of Meteorology and Climate Science",
-      details: "Advisor: Prof. K. Mensah",
+        "Impact of climate change on vectorial capacity of malaria vectors over the agro-ecological zones of Ghana",
+      venue:
+        "B.Sc. Thesis, Department of Physics (Meteorology and Climate Science), KNUST",
+      details: "Advisor: Dr. Edmund Ilimoan Yamba",
     },
   ],
   poster: [
     {
       year: "2024",
-      authors: "Amo Kyeimiah, T., Boateng, A.",
+      authors: "Kyeimiah, T. A.",
       title:
-        "Downscaling CMIP6 precipitation for West Africa with convection-permitting WRF",
-      venue: "WCRP Open Science Conference, Kigali",
+        "Sea-ice projection in Nunatsiavut: combining CESM-HR with in-situ observations",
+      venue:
+        "ICTP School and Workshop on Polar Climates, Trieste, Italy",
+    },
+    {
+      year: "2021",
+      authors: "Kyeimiah, T. A.",
+      title:
+        "Climate change and malaria vectorial capacity across Ghana's agro-ecological zones",
+      venue: "KNUST Final-Year Poster Presentation (Winner)",
     },
   ],
 } as const;
 
 export const PROJECTS = [
   {
-    name: "climdiag",
-    tagline: "A Python toolkit for climate model diagnostics",
+    name: "sea-ice-nunatsiavut",
+    tagline: "Sea-ice projection in Nunatsiavut (MSc thesis)",
     description:
-      "Xarray-native diagnostics for CMIP-class models: energy budgets, moisture transport, teleconnection indices, and probabilistic constraints. Used in three published studies.",
-    stack: ["Python", "xarray", "dask", "cartopy"],
+      "Climatology, anomaly mapping, and time-series analysis of sea-ice concentration and thickness along the Labrador coast, combining CESM-HR output with Canadian Ice Service observations.",
+    stack: ["Python", "Xarray", "Cartopy", "CESM", "ERA5"],
     href: "https://github.com",
   },
   {
-    name: "sahel-forecast",
-    tagline: "Seasonal rainfall forecast dashboard for the Sahel",
+    name: "cmip6-sea-ice-assessment",
+    tagline: "Bias metrics and model evaluation for CMIP6 sea ice",
     description:
-      "Operational S2S dashboard combining ECMWF SEAS5 hindcasts with a gradient-boosted correction trained on 40 years of station data.",
-    stack: ["Python", "PyTorch", "FastAPI", "React"],
+      "Python workflow for computing bias metrics and skill scores of CMIP6 sea-ice concentration and thickness against observational datasets, developed at Environment and Climate Change Canada.",
+    stack: ["Python", "Xarray", "Pandas", "CMIP6", "Cartopy"],
     href: "https://github.com",
   },
   {
-    name: "geoviz-atlas",
-    tagline: "Interactive climate atlas for West Africa",
+    name: "climate-diagnostics-toolkit",
+    tagline: "NSIDC passive-microwave processing toolkit",
     description:
-      "Vector-tile climate atlas serving 12 downscaled climate indicators at 4-km resolution. Designed with adaptation planners in Accra and Ouagadougou.",
-    stack: ["Python", "GDAL", "MapLibre", "TypeScript"],
+      "Reusable diagnostics for processing NSIDC passive-microwave sea-ice data: regridding, masking, and derived-quantity computation for downstream climate analysis.",
+    stack: ["Python", "Xarray", "NumPy", "NSIDC"],
     href: "https://github.com",
   },
   {
-    name: "abl-emulator",
-    tagline: "Neural emulator for atmospheric boundary-layer physics",
+    name: "southern-ocean-mitgcm",
+    tagline: "Southern Ocean circulation with MITgcm",
     description:
-      "Physics-constrained neural network parameterisation of turbulent fluxes, coupled online to CAM6 via a Fortran/Python bridge.",
-    stack: ["PyTorch", "Fortran", "CESM", "MPI"],
+      "Idealised MITgcm ocean simulations exploring thermocline structure and circulation response to wind forcing in the Southern Ocean.",
+    stack: ["MITgcm", "Fortran", "Python", "ParaView"],
     href: "https://github.com",
   },
   {
-    name: "chirps-lens",
-    tagline: "Zonal-statistics pipeline over CHIRPS rainfall",
+    name: "sir-malaria-model",
+    tagline: "SIR malaria disease-transmission model",
     description:
-      "Cloud-native pipeline computing decadal rainfall statistics over admin-2 polygons for all of Africa in under an hour.",
-    stack: ["Python", "DuckDB", "STAC", "AWS"],
+      "Undergraduate research project modelling malaria transmission dynamics with an SIR framework driven by climate variables across Ghana's agro-ecological zones.",
+    stack: ["Python", "NumPy", "SciPy", "Matplotlib"],
     href: "https://github.com",
   },
   {
-    name: "era5-notebooks",
-    tagline: "Teaching notebooks for ERA5 reanalysis analysis",
+    name: "arctic-pamip-miniproject",
+    tagline: "Sea-ice loss & CO₂ doubling on Arctic precipitation",
     description:
-      "Open-source Jupyter curriculum for graduate students on synoptic and climatological analysis of ERA5.",
-    stack: ["Jupyter", "xarray", "metpy"],
+      "Mini-project completed at ICTP (supervised by Prof. Paul Kushner) using CESM-WACCM4 PAMIP experiments to explore precipitation response to sea-ice loss and CO₂ doubling.",
+    stack: ["CESM-WACCM4", "Python", "Xarray", "CDO"],
     href: "https://github.com",
   },
 ] as const;
 
 export const TEACHING = [
   {
-    role: "Instructor",
-    course: "Introduction to Climate Data Analysis with Python",
-    where: "Graduate short course · Summer 2025",
-    description:
-      "Two-week intensive covering xarray, geospatial workflows, and reproducible climate analysis. 34 participants from 9 African universities.",
-  },
-  {
     role: "Teaching Assistant",
-    course: "Atmospheric Dynamics",
-    where: "Undergraduate · 2023 – 2024",
+    course: "ATOC 182 — Introduction to Oceanic Sciences & ATOC 184 — Science of Storms",
+    where: "McGill University · Aug 2023 – May 2024",
     description:
-      "Led weekly problem sessions on quasi-geostrophic theory, waves, and instability for a cohort of 60 students.",
+      "Led math-intensive preparatory sessions, held office hours, graded coursework, and introduced AI-supported tools for critical reading and paper summaries.",
   },
   {
-    role: "Guest Lecturer",
-    course: "Machine Learning for Earth System Science",
-    where: "Graduate seminar · 2024",
+    role: "Teaching & Research Assistant",
+    course:
+      "Climate Change: Science, Policy & Management; Scientific Computing (Python/Fortran); Experimental Physics; Biometeorology and Human Health",
+    where: "Department of Physics, KNUST · Oct 2021 – Sep 2022",
     description:
-      "Lecture on causal inference and emergent constraints as complements to purely predictive ML in climate.",
+      "Supported lecturers with research and laboratory instruction, graded exams, and delivered workshops on Python, Linux, and Fortran for meteorology and climate science.",
   },
   {
-    role: "Mentor",
-    course: "Undergraduate research mentoring",
-    where: "2022 – present",
+    role: "Workshop Instructor",
+    course: "Python for data analysis and visualisation",
+    where: "KNUST · 2021 – 2022",
     description:
-      "Supervised 6 undergraduate research projects on rainfall variability, remote sensing, and Python tooling.",
+      "Tutored undergraduate students in Python with a focus on scientific data analysis, visualisation, and reproducible workflows for climate data.",
+  },
+  {
+    role: "Intern",
+    course: "Weather analysis and forecasting",
+    where: "Ghana Meteorological Agency (GMet), Accra · Jun 2019 – Jul 2019",
+    description:
+      "Recorded and analysed rainfall and wind observations, produced trend analyses from weekly to decadal scales, and contributed to public forecasts using ArcGIS, R, radar/satellite data, and NWP models.",
   },
 ];
 
 export const ARTICLES = [
   {
-    date: "May 2025",
+    date: "Coming soon",
     tag: "Science communication",
-    title: "What emergent constraints can and cannot tell us about future rainfall",
+    title:
+      "What sea ice in Nunatsiavut tells us about a warming Labrador coast",
     excerpt:
-      "A plain-language walkthrough of how climate scientists use observations of the present to sharpen projections of the future — and where the method quietly breaks down.",
+      "A plain-language walkthrough of what CESM-HR simulations and Canadian Ice Service observations imply for landfast ice, communities, and travel along the Labrador coast.",
     href: "#",
     read: "8 min read",
   },
   {
-    date: "March 2025",
+    date: "Coming soon",
     tag: "Technical",
-    title: "Coupling a PyTorch model to a Fortran climate model without losing your mind",
+    title:
+      "A reproducible Xarray recipe for evaluating CMIP6 sea ice against observations",
     excerpt:
-      "Notes from building a stable online coupling between a neural boundary-layer emulator and CAM6. Interfaces, memory layout, and a checklist of things that will bite you.",
+      "Opinionated defaults for regridding, masking, and bias-metric computation when comparing CMIP6 sea-ice fields to satellite records.",
     href: "#",
-    read: "12 min read",
+    read: "10 min read",
   },
   {
-    date: "January 2025",
+    date: "Coming soon",
     tag: "Science communication",
-    title: "The Sahel is greening. That does not mean the climate problem is over.",
+    title:
+      "Warming and mosquitoes: what the numbers say about malaria in a hotter Ghana",
     excerpt:
-      "On the difference between a wetter decade and a robust long-term trend, and why the story matters for adaptation planning in West Africa.",
+      "How rising temperatures shorten Anopheles lifespan and reshape vectorial capacity across Ghana's agro-ecological zones — and what that does (and does not) mean for transmission.",
     href: "#",
     read: "6 min read",
   },
   {
-    date: "October 2024",
+    date: "Coming soon",
     tag: "Technical",
-    title: "A minimal xarray recipe for reproducible climate diagnostics",
+    title: "Coupling Python analysis to Fortran climate output without losing your mind",
     excerpt:
-      "Opinionated defaults for chunking, encoding, and metadata that will save you (and your reviewers) hours later.",
+      "Notes on moving between Fortran model output and Python-based diagnostic workflows: file formats, memory layout, and pitfalls worth knowing before you start.",
     href: "#",
     read: "9 min read",
   },
 ];
 
 export const RESEARCH_INTERESTS = [
-  "Physical climate dynamics",
-  "Land–atmosphere interactions",
-  "West African monsoon systems",
+  "Sea ice and polar climate",
+  "Hydroclimatology and climate diagnostics",
+  "CMIP6 model evaluation and bias analysis",
+  "Climate–health interactions",
   "Machine learning for Earth system science",
-  "Geospatial and remote-sensing analysis",
-  "Reproducible scientific computing",
+  "Geospatial and reproducible scientific computing",
 ];
 
 export const SOCIALS = {
@@ -266,5 +289,8 @@ export const SOCIALS = {
   linkedin: "https://linkedin.com",
   scholar: "https://scholar.google.com",
   orcid: "https://orcid.org",
-  email: "mailto:thomas.amokyeimiah@example.edu",
+  email: "mailto:kyeimiahthomasamo97@gmail.com",
+  emailAddress: "kyeimiahthomasamo97@gmail.com",
+  phone: "+1 438 465 1236",
+  location: "Montreal, Quebec, Canada",
 };

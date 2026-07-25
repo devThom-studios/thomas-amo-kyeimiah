@@ -32,8 +32,8 @@ function Contact() {
         <div className="space-y-8">
           <div>
             <p className="eyebrow mb-2">Email</p>
-            <a href={SOCIALS.email} className="text-2xl font-serif text-navy-deep hover-underline">
-              thomas.amokyeimiah@example.edu
+            <a href={SOCIALS.email} className="text-2xl font-serif text-navy-deep hover-underline break-all">
+              {SOCIALS.emailAddress}
             </a>
             <p className="mt-2 text-sm text-muted-foreground">
               I typically reply within one to two working days.
@@ -65,13 +65,13 @@ function Contact() {
             </ul>
           </div>
           <div>
-            <p className="eyebrow mb-2">Mailing address</p>
+            <p className="eyebrow mb-2">Phone</p>
+            <p className="text-base text-foreground/85">{SOCIALS.phone}</p>
+          </div>
+          <div>
+            <p className="eyebrow mb-2">Based in</p>
             <address className="not-italic text-base leading-relaxed text-foreground/85">
-              Department of Atmospheric Sciences
-              <br />
-              Climate Dynamics Group
-              <br />
-              University Campus, Building 6
+              {SOCIALS.location}
             </address>
           </div>
         </div>
@@ -85,7 +85,7 @@ function Contact() {
             const subject = encodeURIComponent(
               `Website message from ${String(data.get("name") ?? "")}`,
             );
-            window.location.href = `mailto:thomas.amokyeimiah@example.edu?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:${SOCIALS.emailAddress}?subject=${subject}&body=${body}`;
           }}
         >
           <div>
