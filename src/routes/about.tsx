@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import portrait from "@/assets/portrait.jpg";
+import portrait from "@/assets/thomas-winter-montreal.jpg.asset.json";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 
 export const Route = createFileRoute("/about")({
@@ -74,18 +74,18 @@ function About() {
           </div>
         </div>
         <aside>
-          <div className="rounded-md overflow-hidden border border-border bg-mist">
+          <div className="rounded-md overflow-hidden border border-border bg-mist aspect-[900/1100]">
             <img
-              src={portrait}
-              alt="Portrait of Thomas Amo Kyeimiah."
-              width={900}
-              height={1100}
+              src={portrait.url}
+              alt="Thomas Amo Kyeimiah outdoors in Montreal during winter."
+              width={1990}
+              height={2048}
               loading="lazy"
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover object-center"
             />
           </div>
           <p className="mt-3 text-xs text-muted-foreground italic">
-            Portrait, 2025.
+            Montreal, 2025.
           </p>
         </aside>
       </section>
