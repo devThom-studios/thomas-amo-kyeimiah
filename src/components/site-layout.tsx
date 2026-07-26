@@ -158,19 +158,34 @@ export function PageHero({
           backgroundPosition: v.pos,
         }}
       />
+      {/* Localized wash behind the text column (left side) for contrast; right side stays clear. */}
+      <div aria-hidden className={`absolute inset-0 bg-gradient-to-r ${v.wash}`} />
+      {/* Soft fade into the page background at the bottom edge only. */}
       <div
         aria-hidden
-        className={`absolute inset-0 bg-gradient-to-b ${v.overlay}`}
+        className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background"
       />
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-30 atmosphere-contours mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-15 atmosphere-contours mix-blend-overlay"
       />
       <div className="container-prose relative py-20 md:py-28 fade-up">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 text-4xl md:text-6xl leading-[1.05] max-w-4xl">{title}</h1>
+        <p className={`eyebrow ${v.textTone === "light" ? "text-ivory/90" : ""}`}>{eyebrow}</p>
+        <h1
+          className={`mt-4 text-4xl md:text-6xl leading-[1.05] max-w-4xl ${
+            v.textTone === "light"
+              ? "text-ivory drop-shadow-[0_2px_16px_rgba(10,20,40,0.55)]"
+              : ""
+          }`}
+        >
+          {title}
+        </h1>
         {lead && (
-          <p className="mt-6 max-w-2xl text-lg text-foreground/80 leading-relaxed">
+          <p
+            className={`mt-6 max-w-2xl text-lg leading-relaxed ${
+              v.textTone === "light" ? "text-ivory/90" : "text-foreground/85"
+            }`}
+          >
             {lead}
           </p>
         )}
@@ -190,14 +205,27 @@ export type HeroVariant =
   | "contact"
   | "calm";
 
-const HERO_VARIANTS: Record<HeroVariant, { pos: string; overlay: string }> = {
-  about:        { pos: "85% 35%", overlay: "from-background/92 via-background/80 to-background" },
-  teaching:     { pos: "90% 40%", overlay: "from-background/92 via-background/80 to-background" },
-  research:     { pos: "15% 55%", overlay: "from-background/88 via-background/78 to-background" },
-  projects:     { pos: "20% 60%", overlay: "from-background/88 via-background/78 to-background" },
-  publications: { pos: "50% 40%", overlay: "from-background/92 via-background/82 to-background" },
-  articles:     { pos: "55% 42%", overlay: "from-background/92 via-background/82 to-background" },
-  cv:           { pos: "35% 85%", overlay: "from-background/94 via-background/84 to-background" },
-  contact:      { pos: "30% 85%", overlay: "from-background/94 via-background/84 to-background" },
-  calm:         { pos: "50% 50%", overlay: "from-background/90 via-background/80 to-background" },
+// washH: mobile left-column wash (a bit stronger so text stays readable on small screens).
+// washHmd: desktop left-column wash (softer; right half of the image is fully visible).
+// textTone: "dark" keeps navy typography; "light" flips to ivory when the crop is darker.
+// wash: left-column gradient behind text. Mobile classes give a bit more coverage; md: variants
+// soften it so most of the source image stays visible on desktop.
+// textTone: "dark" keeps navy typography; "light" flips to ivory when the crop is darker.
+const LIGHT_WASH =
+  "from-background/80 via-background/45 to-transparent md:from-background/65 md:via-background/20 md:to-transparent";
+const DARK_WASH =
+  "from-navy-deep/70 via-navy-deep/35 to-transparent md:from-navy-deep/55 md:via-navy-deep/15 md:to-transparent";
+const HERO_VARIANTS: Record<
+  HeroVariant,
+  { pos: string; wash: string; textTone: "dark" | "light" }
+> = {
+  about:        { pos: "85% 35%", wash: LIGHT_WASH, textTone: "dark" },
+  teaching:     { pos: "90% 40%", wash: LIGHT_WASH, textTone: "dark" },
+  research:     { pos: "15% 55%", wash: DARK_WASH,  textTone: "light" },
+  projects:     { pos: "20% 60%", wash: DARK_WASH,  textTone: "light" },
+  publications: { pos: "55% 40%", wash: LIGHT_WASH, textTone: "dark" },
+  articles:     { pos: "60% 42%", wash: LIGHT_WASH, textTone: "dark" },
+  cv:           { pos: "35% 80%", wash: LIGHT_WASH, textTone: "dark" },
+  contact:      { pos: "30% 80%", wash: LIGHT_WASH, textTone: "dark" },
+  calm:         { pos: "50% 50%", wash: LIGHT_WASH, textTone: "dark" },
 };
