@@ -66,7 +66,7 @@ function Home() {
             <a
               href={SOCIALS.scholar}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
             >
               Google Scholar
@@ -74,7 +74,7 @@ function Home() {
             <a
               href={SOCIALS.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
             >
               GitHub
@@ -82,7 +82,7 @@ function Home() {
             <a
               href={SOCIALS.linkedin}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
             >
               LinkedIn

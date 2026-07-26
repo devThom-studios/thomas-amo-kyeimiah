@@ -54,7 +54,7 @@ function Projects() {
                   <a
                     href={p.href}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="ml-auto text-sm hover-underline text-navy-deep"
                   >
                     View repository →

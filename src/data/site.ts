@@ -27,7 +27,7 @@ export const RESEARCH = [
         label: "Thesis (McGill eScholarship)",
         href: "https://escholarship.mcgill.ca/concern/theses/kw52jf57r",
       },
-      { label: "Code (GitHub)", href: "https://github.com" },
+      { label: "Code (GitHub)", href: "https://github.com/devThom-studios" },
     ],
   },
   {
@@ -49,7 +49,7 @@ export const RESEARCH = [
       "Quantified inter-model spread in Arctic sea-ice concentration and thickness against satellite records.",
       "Delivered reusable Python workflows for climate diagnostics adopted by the research team.",
     ],
-    links: [{ label: "Code (GitHub)", href: "https://github.com" }],
+    links: [{ label: "Code (GitHub)", href: "https://github.com/devThom-studios" }],
   },
   {
     slug: "malaria-vectorial-capacity",
@@ -156,7 +156,7 @@ export const PROJECTS = [
     description:
       "Climatology, anomaly mapping, and time-series analysis of sea-ice concentration and thickness along the Labrador coast, combining CESM-HR output with Canadian Ice Service observations.",
     stack: ["Python", "Xarray", "Cartopy", "CESM", "ERA5"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
   {
     name: "cmip6-sea-ice-assessment",
@@ -164,7 +164,7 @@ export const PROJECTS = [
     description:
       "Python workflow for computing bias metrics and skill scores of CMIP6 sea-ice concentration and thickness against observational datasets, developed at Environment and Climate Change Canada.",
     stack: ["Python", "Xarray", "Pandas", "CMIP6", "Cartopy"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
   {
     name: "climate-diagnostics-toolkit",
@@ -172,7 +172,7 @@ export const PROJECTS = [
     description:
       "Reusable diagnostics for processing NSIDC passive-microwave sea-ice data: regridding, masking, and derived-quantity computation for downstream climate analysis.",
     stack: ["Python", "Xarray", "NumPy", "NSIDC"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
   {
     name: "southern-ocean-mitgcm",
@@ -180,7 +180,7 @@ export const PROJECTS = [
     description:
       "Idealised MITgcm ocean simulations exploring thermocline structure and circulation response to wind forcing in the Southern Ocean.",
     stack: ["MITgcm", "Fortran", "Python", "ParaView"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
   {
     name: "sir-malaria-model",
@@ -188,7 +188,7 @@ export const PROJECTS = [
     description:
       "Undergraduate research project modelling malaria transmission dynamics with an SIR framework driven by climate variables across Ghana's agro-ecological zones.",
     stack: ["Python", "NumPy", "SciPy", "Matplotlib"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
   {
     name: "arctic-pamip-miniproject",
@@ -196,7 +196,7 @@ export const PROJECTS = [
     description:
       "Mini-project completed at ICTP (supervised by Prof. Paul Kushner) using CESM-WACCM4 PAMIP experiments to explore precipitation response to sea-ice loss and CO₂ doubling.",
     stack: ["CESM-WACCM4", "Python", "Xarray", "CDO"],
-    href: "https://github.com",
+    href: "https://github.com/devThom-studios",
   },
 ] as const;
 
@@ -285,10 +285,10 @@ export const RESEARCH_INTERESTS = [
 
 export const SOCIALS = {
   cv: "/cv",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  scholar: "https://scholar.google.com",
-  orcid: "https://orcid.org",
+  github: "https://github.com/devThom-studios",
+  linkedin: "https://www.linkedin.com/in/thomas-amo-kyeimiah-msc-87b602166/",
+  scholar: "https://scholar.google.com/citations?user=Wh2jRRYAAAAJ&hl=en",
+  orcid: "https://orcid.org/0009-0002-5080-0818",
   email: "mailto:kyeimiahthomasamo97@gmail.com",
   emailAddress: "kyeimiahthomasamo97@gmail.com",
   phone: "+1 438 465 1236",
