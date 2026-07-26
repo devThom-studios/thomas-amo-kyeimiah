@@ -127,7 +127,7 @@ function SiteFooter() {
         <div>
           <p className="eyebrow mb-3">Elsewhere</p>
           <ul className="space-y-1.5">
-            <li><a href="mailto:kyeimiahthomasamo97@gmail.com" className="hover-underline">Email</a></li>
+            <li><Link to="/contact" className="hover-underline">Email</Link></li>
             <li><a href="https://scholar.google.com/citations?user=Wh2jRRYAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="hover-underline">Google Scholar</a></li>
             <li><a href="https://github.com/devThom-studios" target="_blank" rel="noopener noreferrer" className="hover-underline">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/thomas-amo-kyeimiah-msc-87b602166/" target="_blank" rel="noopener noreferrer" className="hover-underline">LinkedIn</a></li>
