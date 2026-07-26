@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Maximize2 } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { RESEARCH } from "@/data/site";
 import { Link } from "@tanstack/react-router";
 import { NAIN_FEATURE_IMAGE } from "@/data/nain-fieldwork";
+import { FigureLightbox } from "@/components/figure-lightbox";
 
 export const Route = createFileRoute("/research")({
   head: () => ({
@@ -23,6 +26,7 @@ export const Route = createFileRoute("/research")({
 });
 
 function Research() {
+  const [openFigure, setOpenFigure] = useState<{ src: string; alt: string } | null>(null);
   return (
     <SiteLayout>
       <PageHero
@@ -38,14 +42,25 @@ function Research() {
             className="grid gap-10 md:grid-cols-[5fr_7fr] items-start"
           >
             <div className={i % 2 === 1 ? "md:order-2" : ""}>
-              <div className="rounded-md overflow-hidden border border-border bg-mist flex items-center justify-center aspect-[4/3] p-4">
-                <img
-                  src={r.image}
-                  alt={r.imageAlt}
-                  loading="lazy"
-                  className="max-w-full max-h-full w-auto h-auto object-contain"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={() => setOpenFigure({ src: r.image, alt: r.imageAlt })}
+                className="group relative block w-full rounded-md overflow-hidden border border-border bg-mist focus:outline-none focus:ring-2 focus:ring-accent"
+                aria-label={`View full figure: ${r.imageAlt}`}
+              >
+                <div className="flex items-center justify-center aspect-[4/3] p-6">
+                  <img
+                    src={r.image}
+                    alt={r.imageAlt}
+                    loading="lazy"
+                    className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1.5 rounded-full bg-navy-deep/85 text-white text-xs px-2.5 py-1 opacity-90 group-hover:opacity-100">
+                  <Maximize2 size={12} aria-hidden="true" />
+                  View full figure
+                </span>
+              </button>
               <p className="mt-3 text-xs text-muted-foreground italic">
                 Figure. {r.imageAlt}
               </p>
@@ -153,6 +168,11 @@ function Research() {
           </div>
         </article>
       </section>
+      <FigureLightbox
+        src={openFigure?.src ?? null}
+        alt={openFigure?.alt ?? ""}
+        onClose={() => setOpenFigure(null)}
+      />
     </SiteLayout>
   );
 }
