@@ -35,6 +35,7 @@ function Research() {
   return (
     <SiteLayout>
       <PageHero
+        variant="research"
         eyebrow="Research"
         title="Physical climate dynamics, data-driven attribution, and hybrid modelling."
         lead="Each project below is an ongoing thread of work. I've included methods, datasets, headline results, and links to the code and papers where they exist."

@@ -24,6 +24,7 @@ function Teaching() {
   return (
     <SiteLayout>
       <PageHero
+        variant="teaching"
         eyebrow="Teaching"
         title="Courses, mentoring, and open teaching material."
         lead="I teach climate data science with an emphasis on reproducibility, physical intuition, and practical geospatial workflows. All teaching notebooks are open-source."

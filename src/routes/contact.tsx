@@ -50,6 +50,7 @@ function Contact() {
   return (
     <SiteLayout>
       <PageHero
+        variant="contact"
         eyebrow="Contact"
         title="Get in touch."
         lead="I welcome messages about research collaboration, PhD supervision opportunities, invited talks, teaching, and scientific writing."
