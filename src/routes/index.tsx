@@ -134,9 +134,12 @@ function Home() {
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {featured.map((r) => (
-              <article
+              <Link
                 key={r.slug}
-                className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:border-navy-deep transition-colors"
+                to="/research"
+                hash={r.slug}
+                aria-label={`Read details: ${r.title}`}
+                className="group flex flex-col bg-card border border-border rounded-md overflow-hidden transition-all duration-200 hover:border-navy-deep hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
               >
                 <div className="aspect-[4/3] overflow-hidden bg-mist">
                   <img
@@ -155,7 +158,7 @@ function Home() {
                     {r.summary}
                   </p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
