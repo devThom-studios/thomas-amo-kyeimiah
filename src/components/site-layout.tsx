@@ -1,6 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import earthHero from "@/assets/earth-system-hero.jpg.asset.json";
+import aboutHero from "@/assets/heroes/about.jpg.asset.json";
+import researchHero from "@/assets/heroes/research.jpg.asset.json";
+import publicationsHero from "@/assets/heroes/publications.jpg.asset.json";
+import projectsHero from "@/assets/heroes/projects.jpg.asset.json";
+import teachingHero from "@/assets/heroes/teaching.jpg.asset.json";
+import articlesHero from "@/assets/heroes/articles.jpg.asset.json";
+import cvHero from "@/assets/heroes/cv.jpg.asset.json";
+import contactHero from "@/assets/heroes/contact.jpg.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -150,12 +157,22 @@ export function PageHero({
   const v = HERO_VARIANTS[variant];
   return (
     <section className="relative border-b border-border overflow-hidden bg-navy-deep">
+      {/* Desktop crop */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-cover"
+        className="absolute inset-0 bg-cover hidden md:block"
         style={{
-          backgroundImage: `url(${earthHero.url})`,
+          backgroundImage: `url(${v.image})`,
           backgroundPosition: v.pos,
+        }}
+      />
+      {/* Mobile crop */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-cover md:hidden"
+        style={{
+          backgroundImage: `url(${v.image})`,
+          backgroundPosition: v.posMobile,
         }}
       />
       {/* Consistent navy overlay — same treatment as the Nain hero. */}
@@ -193,15 +210,16 @@ export type HeroVariant =
   | "contact"
   | "calm";
 
-// Page-specific crops keep the same panorama from looking identical across routes.
-const HERO_VARIANTS: Record<HeroVariant, { pos: string }> = {
-  about:        { pos: "85% 35%" },
-  teaching:     { pos: "90% 40%" },
-  research:     { pos: "15% 55%" },
-  projects:     { pos: "20% 60%" },
-  publications: { pos: "55% 40%" },
-  articles:     { pos: "60% 42%" },
-  cv:           { pos: "35% 80%" },
-  contact:      { pos: "30% 80%" },
-  calm:         { pos: "50% 50%" },
+// Per-route hero imagery with desktop + mobile focal points tuned to keep
+// text readable and each image's focal point visible.
+const HERO_VARIANTS: Record<HeroVariant, { image: string; pos: string; posMobile: string }> = {
+  about:        { image: aboutHero.url,        pos: "70% 55%", posMobile: "75% 55%" },
+  teaching:     { image: teachingHero.url,     pos: "70% 60%", posMobile: "70% 60%" },
+  research:     { image: researchHero.url,     pos: "75% 45%", posMobile: "80% 50%" },
+  projects:     { image: projectsHero.url,     pos: "80% 60%", posMobile: "80% 60%" },
+  publications: { image: publicationsHero.url, pos: "70% 50%", posMobile: "70% 55%" },
+  articles:     { image: articlesHero.url,     pos: "70% 45%", posMobile: "75% 50%" },
+  cv:           { image: cvHero.url,           pos: "75% 45%", posMobile: "80% 50%" },
+  contact:      { image: contactHero.url,      pos: "55% 55%", posMobile: "55% 55%" },
+  calm:         { image: aboutHero.url,        pos: "50% 50%", posMobile: "50% 50%" },
 };
