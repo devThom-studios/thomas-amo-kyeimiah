@@ -208,17 +208,24 @@ export type HeroVariant =
 // washH: mobile left-column wash (a bit stronger so text stays readable on small screens).
 // washHmd: desktop left-column wash (softer; right half of the image is fully visible).
 // textTone: "dark" keeps navy typography; "light" flips to ivory when the crop is darker.
+// wash: left-column gradient behind text. Mobile classes give a bit more coverage; md: variants
+// soften it so most of the source image stays visible on desktop.
+// textTone: "dark" keeps navy typography; "light" flips to ivory when the crop is darker.
+const LIGHT_WASH =
+  "from-background/80 via-background/45 to-transparent md:from-background/65 md:via-background/20 md:to-transparent";
+const DARK_WASH =
+  "from-navy-deep/70 via-navy-deep/35 to-transparent md:from-navy-deep/55 md:via-navy-deep/15 md:to-transparent";
 const HERO_VARIANTS: Record<
   HeroVariant,
-  { pos: string; washH: string; washHmd: string; textTone: "dark" | "light" }
+  { pos: string; wash: string; textTone: "dark" | "light" }
 > = {
-  about:        { pos: "85% 35%", washH: "from-background/80 via-background/45 to-transparent", washHmd: "from-background/70 via-background/25 to-transparent", textTone: "dark" },
-  teaching:     { pos: "90% 40%", washH: "from-background/80 via-background/45 to-transparent", washHmd: "from-background/70 via-background/25 to-transparent", textTone: "dark" },
-  research:     { pos: "15% 55%", washH: "from-navy-deep/70 via-navy-deep/35 to-transparent", washHmd: "from-navy-deep/60 via-navy-deep/20 to-transparent", textTone: "light" },
-  projects:     { pos: "20% 60%", washH: "from-navy-deep/70 via-navy-deep/35 to-transparent", washHmd: "from-navy-deep/60 via-navy-deep/20 to-transparent", textTone: "light" },
-  publications: { pos: "55% 40%", washH: "from-background/78 via-background/40 to-transparent", washHmd: "from-background/65 via-background/20 to-transparent", textTone: "dark" },
-  articles:     { pos: "60% 42%", washH: "from-background/78 via-background/40 to-transparent", washHmd: "from-background/65 via-background/20 to-transparent", textTone: "dark" },
-  cv:           { pos: "35% 80%", washH: "from-background/80 via-background/45 to-transparent", washHmd: "from-background/70 via-background/25 to-transparent", textTone: "dark" },
-  contact:      { pos: "30% 80%", washH: "from-background/80 via-background/45 to-transparent", washHmd: "from-background/70 via-background/25 to-transparent", textTone: "dark" },
-  calm:         { pos: "50% 50%", washH: "from-background/78 via-background/40 to-transparent", washHmd: "from-background/65 via-background/20 to-transparent", textTone: "dark" },
+  about:        { pos: "85% 35%", wash: LIGHT_WASH, textTone: "dark" },
+  teaching:     { pos: "90% 40%", wash: LIGHT_WASH, textTone: "dark" },
+  research:     { pos: "15% 55%", wash: DARK_WASH,  textTone: "light" },
+  projects:     { pos: "20% 60%", wash: DARK_WASH,  textTone: "light" },
+  publications: { pos: "55% 40%", wash: LIGHT_WASH, textTone: "dark" },
+  articles:     { pos: "60% 42%", wash: LIGHT_WASH, textTone: "dark" },
+  cv:           { pos: "35% 80%", wash: LIGHT_WASH, textTone: "dark" },
+  contact:      { pos: "30% 80%", wash: LIGHT_WASH, textTone: "dark" },
+  calm:         { pos: "50% 50%", wash: LIGHT_WASH, textTone: "dark" },
 };
