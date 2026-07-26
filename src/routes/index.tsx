@@ -46,9 +46,8 @@ function Home() {
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover object-[65%_35%] md:object-[60%_40%]"
         />
-        {/* Layered overlays: darker at the top-left for text legibility, fading to the site background. */}
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-navy-deep/85 via-navy-deep/55 to-background/85" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
+        {/* Consistent navy overlay — same treatment as the Nain hero. */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
         <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay" />
         <div className="container-prose relative py-24 md:py-36 fade-up">
           <p className="eyebrow">Atmospheric & Climate Science · Earth System Data Science</p>
