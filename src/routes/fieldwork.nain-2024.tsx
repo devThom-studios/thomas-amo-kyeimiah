@@ -46,7 +46,7 @@ function NainFieldwork() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
         <div className="container-prose relative py-28 md:py-40 fade-up text-white">
           <p className="eyebrow text-white/80">Fieldwork · February 2024</p>
-          <h1 className="mt-5 text-4xl md:text-6xl leading-[1.05] max-w-4xl font-serif">
+          <h1 className="mt-5 text-4xl md:text-6xl leading-[1.05] max-w-4xl font-serif text-white">
             Nain Field Campaign — Nunatsiavut, Labrador
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
