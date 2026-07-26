@@ -44,9 +44,13 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container-prose flex items-center justify-between h-16">
-        <Link to="/" className="flex items-baseline gap-2 group">
-          <span className="font-serif text-lg text-navy-deep tracking-tight">
-            Thomas Amo Kyeimiah
+        <Link
+          to="/"
+          className="flex items-baseline gap-2 group"
+          aria-label="KyeimiahLab — Home"
+        >
+          <span className="font-serif text-lg text-navy-deep tracking-tight whitespace-nowrap">
+            Kyeimiah<span className="text-sky">Lab</span>
           </span>
         </Link>
         <nav className="hidden lg:flex items-center gap-1 text-sm" aria-label="Primary">
