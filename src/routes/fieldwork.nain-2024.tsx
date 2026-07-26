@@ -43,7 +43,7 @@ function NainFieldwork() {
           className="absolute inset-0 h-full w-full object-cover object-center"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/60 via-navy-deep/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
         <div className="container-prose relative py-28 md:py-40 fade-up text-white">
           <p className="eyebrow text-white/80">Fieldwork · February 2024</p>
           <h1 className="mt-5 text-4xl md:text-6xl leading-[1.05] max-w-4xl font-serif">
