@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { SOCIALS } from "@/data/site";
+import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,6 +22,31 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "submitting") return;
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    setStatus("submitting");
+    try {
+      const res = await fetch("https://formspree.io/f/xdaqyeon", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <SiteLayout>
       <PageHero
@@ -77,16 +103,7 @@ function Contact() {
         </div>
         <form
           className="rounded-md border border-border bg-card p-8 space-y-5"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const form = e.currentTarget as HTMLFormElement;
-            const data = new FormData(form);
-            const body = encodeURIComponent(String(data.get("message") ?? ""));
-            const subject = encodeURIComponent(
-              `Website message from ${String(data.get("name") ?? "")}`,
-            );
-            window.location.href = `mailto:${SOCIALS.emailAddress}?subject=${subject}&body=${body}`;
-          }}
+          onSubmit={handleSubmit}
         >
           <div>
             <label htmlFor="name" className="eyebrow block mb-2">Name</label>
@@ -119,10 +136,25 @@ function Contact() {
           </div>
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-md bg-navy-deep text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-navy transition-colors"
+            disabled={status === "submitting"}
+            className="inline-flex items-center gap-2 rounded-md bg-navy-deep text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-navy transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Send message
+            {status === "submitting" ? "Sending…" : "Send message"}
           </button>
+          <div aria-live="polite" role="status" className="min-h-[1.25rem] text-sm">
+            {status === "success" && (
+              <p className="text-navy-deep">Thank you—your message has been sent.</p>
+            )}
+            {status === "error" && (
+              <p className="text-destructive">
+                Something went wrong. Please try again or email{" "}
+                <a href={SOCIALS.email} className="hover-underline">
+                  {SOCIALS.emailAddress}
+                </a>{" "}
+                directly.
+              </p>
+            )}
+          </div>
         </form>
       </section>
     </SiteLayout>
