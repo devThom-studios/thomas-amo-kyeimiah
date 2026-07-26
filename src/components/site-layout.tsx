@@ -31,9 +31,6 @@ function SiteHeader() {
           <span className="font-serif text-lg text-navy-deep tracking-tight">
             Thomas Amo Kyeimiah
           </span>
-          <span className="hidden sm:inline text-xs text-muted-foreground tracking-widest uppercase">
-            / Atmospheric Science
-          </span>
         </Link>
         <nav className="hidden lg:flex items-center gap-7 text-sm">
           {NAV.map((item) => (
