@@ -24,6 +24,7 @@ function Projects() {
   return (
     <SiteLayout>
       <PageHero
+        variant="projects"
         eyebrow="Projects"
         title="Open-source scientific software."
         lead="Computational work — most of it public — that supports the research on this site. Python for climate modelling, machine learning, geospatial analysis, and visualisation."

@@ -72,6 +72,7 @@ function Publications() {
   return (
     <SiteLayout>
       <PageHero
+        variant="publications"
         eyebrow="Publications"
         title="Peer-reviewed articles, talks, theses, and posters."
         lead="A complete list is available in the CV. Preprints and DOIs are linked where available."

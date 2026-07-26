@@ -24,6 +24,7 @@ function Articles() {
   return (
     <SiteLayout>
       <PageHero
+        variant="articles"
         eyebrow="Articles"
         title="Writing on climate science and scientific computing."
         lead="Longer-form essays for a general audience and technical notes for other researchers. Two threads: what the atmosphere is doing, and how we know."

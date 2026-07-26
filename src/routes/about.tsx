@@ -25,6 +25,7 @@ function About() {
   return (
     <SiteLayout>
       <PageHero
+        variant="about"
         eyebrow="About"
         title="Atmospheric and climate data scientist working across polar, tropical, and computational climate science."
         lead="From sea ice on the Labrador coast to malaria transmission in Ghana, I use climate models, reanalyses, and reproducible Python workflows to understand a changing Earth system."

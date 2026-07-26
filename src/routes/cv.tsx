@@ -47,6 +47,7 @@ function CV() {
   return (
     <SiteLayout>
       <PageHero
+        variant="cv"
         eyebrow="Curriculum Vitae"
         title="Curriculum Vitae"
         lead="A summary version is below. The full PDF is available on request."
