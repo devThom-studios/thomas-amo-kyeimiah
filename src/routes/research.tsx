@@ -27,6 +27,11 @@ export const Route = createFileRoute("/research")({
 
 function Research() {
   const [openFigure, setOpenFigure] = useState<{ src: string; alt: string } | null>(null);
+  const thumbPosition: Record<string, string> = {
+    "sea-ice-nunatsiavut": "center",
+    "cmip6-sea-ice-assessment": "center",
+    "malaria-vectorial-capacity": "center",
+  };
   return (
     <SiteLayout>
       <PageHero
@@ -48,13 +53,13 @@ function Research() {
                 className="group block w-full rounded-md overflow-hidden border border-border bg-mist focus:outline-none focus:ring-2 focus:ring-accent"
                 aria-label={`View full figure: ${r.imageAlt}`}
               >
-                <div className="p-3 sm:p-4">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={r.image}
                     alt={r.imageAlt}
                     loading="lazy"
-                    className="mx-auto w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                    style={{ maxHeight: "70vh" }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    style={{ objectPosition: thumbPosition[r.slug] ?? "center" }}
                   />
                 </div>
                 <span className="flex items-center justify-center gap-1.5 border-t border-border bg-background/60 py-2 text-xs text-navy-deep">
