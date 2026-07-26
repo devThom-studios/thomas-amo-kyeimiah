@@ -59,7 +59,7 @@ export const RESEARCH = [
     period: "2021 · BSc thesis, KNUST",
     image: malaria.url,
     imageAlt:
-      "Map of Ghana's agro-climatic zones (Sudan Savannah, Guinea Savannah, Transition, Forest, Coastal) with temperature overlay.",
+      "Monthly maps of malaria vectorial capacity across Ghana from January through December, showing the seasonal cycle across the country's agro-ecological zones.",
     summary:
       "Investigated how temperature change affects the vectorial capacity of Anopheles mosquitoes across the agro-ecological zones of Ghana, combining climate data analysis with statistical transmission modelling. Contributed to a peer-reviewed study on warming and mosquito lifespan.",
     methods: [
