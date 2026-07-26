@@ -196,6 +196,7 @@ export const PROJECTS = [
     description:
       "Mini-project completed at ICTP (supervised by Prof. Paul Kushner) using CESM-WACCM4 PAMIP experiments to explore precipitation response to sea-ice loss and CO₂ doubling.",
     stack: ["CESM-WACCM4", "Python", "Xarray", "CDO"],
+    href: undefined,
   },
 ] as const;
 
