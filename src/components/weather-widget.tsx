@@ -1,4 +1,23 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Sun,
+  Moon,
+  Cloud,
+  CloudSun,
+  CloudMoon,
+  Cloudy,
+  CloudFog,
+  CloudDrizzle,
+  CloudRain,
+  CloudSnow,
+  CloudLightning,
+  Wind,
+  Droplets,
+  Thermometer,
+  MapPin,
+  RefreshCw,
+  type LucideIcon,
+} from "lucide-react";
 
 type GeoResult = {
   id: number;
@@ -28,6 +47,7 @@ type Forecast = {
     weather_code: number;
     precipitation: number;
     wind_speed_10m: number;
+    is_day: number;
   };
   daily: {
     time: string[];
@@ -84,6 +104,88 @@ function describe(code: number) {
   return WMO[code] ?? "—";
 }
 
+// Map WMO weather codes to Lucide icons + a tasteful accent color token.
+type Family = "clear" | "partly" | "cloudy" | "fog" | "drizzle" | "rain" | "snow" | "storm";
+
+function family(code: number): Family {
+  if (code === 0) return "clear";
+  if (code === 1 || code === 2) return "partly";
+  if (code === 3) return "cloudy";
+  if (code === 45 || code === 48) return "fog";
+  if (code >= 51 && code <= 57) return "drizzle";
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "snow";
+  if (code >= 95) return "storm";
+  return "cloudy";
+}
+
+function iconFor(code: number, isDay = true): LucideIcon {
+  switch (family(code)) {
+    case "clear":
+      return isDay ? Sun : Moon;
+    case "partly":
+      return isDay ? CloudSun : CloudMoon;
+    case "cloudy":
+      return Cloudy;
+    case "fog":
+      return CloudFog;
+    case "drizzle":
+      return CloudDrizzle;
+    case "rain":
+      return CloudRain;
+    case "snow":
+      return CloudSnow;
+    case "storm":
+      return CloudLightning;
+    default:
+      return Cloud;
+  }
+}
+
+// Semantic accent per condition family, tuned to the site's blue palette.
+const ACCENT: Record<Family, { fg: string; bg: string; ring: string }> = {
+  clear:   { fg: "text-amber-600",   bg: "bg-amber-100/70",  ring: "ring-amber-200" },
+  partly:  { fg: "text-sky-600",     bg: "bg-sky-100/70",    ring: "ring-sky-200" },
+  cloudy:  { fg: "text-slate-600",   bg: "bg-slate-100",     ring: "ring-slate-200" },
+  fog:     { fg: "text-slate-500",   bg: "bg-slate-100",     ring: "ring-slate-200" },
+  drizzle: { fg: "text-sky-700",     bg: "bg-sky-100",       ring: "ring-sky-200" },
+  rain:    { fg: "text-blue-700",    bg: "bg-blue-100",      ring: "ring-blue-200" },
+  snow:    { fg: "text-cyan-600",    bg: "bg-cyan-100/70",   ring: "ring-cyan-200" },
+  storm:   { fg: "text-violet-700",  bg: "bg-violet-100/70", ring: "ring-violet-200" },
+};
+
+// Parse an Open-Meteo local wall-clock time string ("YYYY-MM-DDTHH:mm" or
+// "YYYY-MM-DD") without applying the browser's timezone. Returns a Date built
+// via Date.UTC so downstream Intl formatting with timeZone: "UTC" yields the
+// same wall-clock values the API already localised.
+function parseWallClock(iso: string): Date | null {
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/);
+  if (!m) return null;
+  const [, y, mo, d, h = "0", mi = "0"] = m;
+  return new Date(Date.UTC(+y, +mo - 1, +d, +h, +mi));
+}
+
+function formatWallClockTime(iso: string): string {
+  const d = parseWallClock(iso);
+  if (!d) return iso;
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "UTC",
+  }).format(d);
+}
+
+function formatWallClockWeekday(iso: string): string {
+  const d = parseWallClock(iso);
+  if (!d) return iso;
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    timeZone: "UTC",
+  }).format(d);
+}
+
 function formatLocation(l: Location | GeoResult) {
   return [l.name, "admin1" in l ? l.admin1 : undefined, l.country]
     .filter(Boolean)
@@ -95,6 +197,7 @@ export function WeatherWidget() {
   const [forecast, setForecast] = useState<Forecast | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lastSuccessAt, setLastSuccessAt] = useState<Date | null>(null);
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<GeoResult[] | null>(null);
@@ -107,50 +210,79 @@ export function WeatherWidget() {
   const forecastReqId = useRef(0);
   const searchReqId = useRef(0);
   const rootRef = useRef<HTMLDivElement>(null);
+  const forecastCtrl = useRef<AbortController | null>(null);
 
-  // Fetch forecast whenever location changes
+  const fetchForecast = useCallback(
+    (loc: Location) => {
+      const id = ++forecastReqId.current;
+      forecastCtrl.current?.abort();
+      const ctrl = new AbortController();
+      forecastCtrl.current = ctrl;
+      setLoading(true);
+      setError(null);
+
+      const url = new URL("https://api.open-meteo.com/v1/forecast");
+      url.searchParams.set("latitude", String(loc.latitude));
+      url.searchParams.set("longitude", String(loc.longitude));
+      url.searchParams.set(
+        "current",
+        "temperature_2m,apparent_temperature,weather_code,precipitation,wind_speed_10m,is_day"
+      );
+      url.searchParams.set(
+        "daily",
+        "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+      );
+      url.searchParams.set("temperature_unit", "celsius");
+      url.searchParams.set("wind_speed_unit", "kmh");
+      url.searchParams.set("precipitation_unit", "mm");
+      url.searchParams.set("timezone", "auto");
+      url.searchParams.set("forecast_days", "5");
+      // Cache-buster so revalidation never returns a stale intermediary copy.
+      url.searchParams.set("_", String(Date.now()));
+
+      fetch(url.toString(), { signal: ctrl.signal, cache: "no-store" })
+        .then((r) => {
+          if (!r.ok) throw new Error("Weather service unavailable");
+          return r.json();
+        })
+        .then((data: Forecast) => {
+          if (id !== forecastReqId.current) return;
+          setForecast(data);
+          setLastSuccessAt(new Date());
+          setLoading(false);
+        })
+        .catch((e: unknown) => {
+          if (id !== forecastReqId.current) return;
+          if ((e as { name?: string })?.name === "AbortError") return;
+          setError("Could not load the forecast. Please try again.");
+          setLoading(false);
+        });
+    },
+    []
+  );
+
+  // Fetch on location change.
   useEffect(() => {
-    const id = ++forecastReqId.current;
-    const ctrl = new AbortController();
-    setLoading(true);
-    setError(null);
+    fetchForecast(location);
+    return () => forecastCtrl.current?.abort();
+  }, [location, fetchForecast]);
 
-    const url = new URL("https://api.open-meteo.com/v1/forecast");
-    url.searchParams.set("latitude", String(location.latitude));
-    url.searchParams.set("longitude", String(location.longitude));
-    url.searchParams.set(
-      "current",
-      "temperature_2m,apparent_temperature,weather_code,precipitation,wind_speed_10m"
-    );
-    url.searchParams.set(
-      "daily",
-      "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
-    );
-    url.searchParams.set("temperature_unit", "celsius");
-    url.searchParams.set("wind_speed_unit", "kmh");
-    url.searchParams.set("precipitation_unit", "mm");
-    url.searchParams.set("timezone", "auto");
-    url.searchParams.set("forecast_days", "5");
-
-    fetch(url.toString(), { signal: ctrl.signal })
-      .then((r) => {
-        if (!r.ok) throw new Error("Weather service unavailable");
-        return r.json();
-      })
-      .then((data: Forecast) => {
-        if (id !== forecastReqId.current) return;
-        setForecast(data);
-        setLoading(false);
-      })
-      .catch((e: unknown) => {
-        if (id !== forecastReqId.current) return;
-        if ((e as { name?: string })?.name === "AbortError") return;
-        setError("Could not load the forecast. Please try again.");
-        setLoading(false);
-      });
-
-    return () => ctrl.abort();
-  }, [location]);
+  // Auto-refresh every 12 minutes; refresh on tab re-visibility if stale (>10 min).
+  useEffect(() => {
+    const INTERVAL = 12 * 60 * 1000;
+    const STALE = 10 * 60 * 1000;
+    const timer = window.setInterval(() => fetchForecast(location), INTERVAL);
+    const onVis = () => {
+      if (document.visibilityState !== "visible") return;
+      const age = lastSuccessAt ? Date.now() - lastSuccessAt.getTime() : Infinity;
+      if (age > STALE) fetchForecast(location);
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, [location, lastSuccessAt, fetchForecast]);
 
   // Debounced city search
   useEffect(() => {
@@ -289,20 +421,24 @@ export function WeatherWidget() {
     );
   }
 
-  const updatedLabel = useMemo(() => {
-    if (!forecast) return "";
-    try {
-      const d = new Date(forecast.current.time);
-      return new Intl.DateTimeFormat("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        weekday: "short",
-        timeZone: forecast.timezone,
-      }).format(d);
-    } catch {
-      return forecast.current.time;
-    }
-  }, [forecast]);
+  const conditionsLabel = useMemo(
+    () => (forecast ? formatWallClockTime(forecast.current.time) : ""),
+    [forecast]
+  );
+
+  const lastRefreshLabel = useMemo(() => {
+    if (!lastSuccessAt) return "";
+    return new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(lastSuccessAt);
+  }, [lastSuccessAt]);
+
+  const currentFamily = forecast ? family(forecast.current.weather_code) : "cloudy";
+  const currentIsDay = forecast ? forecast.current.is_day === 1 : true;
+  const CurrentIcon = forecast ? iconFor(forecast.current.weather_code, currentIsDay) : Cloud;
+  const currentAccent = ACCENT[currentFamily];
 
   return (
     <div
@@ -321,18 +457,38 @@ export function WeatherWidget() {
           </h3>
           {forecast && (
             <p className="mt-1 text-xs text-muted-foreground">
-              Updated {updatedLabel} · {forecast.timezone}
+              Current conditions as of {conditionsLabel} · {forecast.timezone}
             </p>
           )}
         </div>
-        <button
-          type="button"
-          onClick={useMyLocation}
-          disabled={geoBusy}
-          className="text-sm rounded-md border border-border px-3 py-2 hover:border-navy-deep transition-colors disabled:opacity-60"
-        >
-          {geoBusy ? "Locating…" : "Use my location"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => fetchForecast(location)}
+            disabled={loading}
+            aria-label="Refresh current conditions"
+            title={lastSuccessAt ? `Last refreshed ${lastRefreshLabel}` : "Refresh"}
+            className="text-sm inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 hover:border-navy-deep transition-colors disabled:opacity-60"
+          >
+            <RefreshCw
+              size={14}
+              className={loading ? "animate-spin" : ""}
+              aria-hidden="true"
+            />
+            <span className="sr-only sm:not-sr-only">
+              {loading ? "Refreshing…" : "Refresh"}
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={useMyLocation}
+            disabled={geoBusy}
+            className="text-sm inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 hover:border-navy-deep transition-colors disabled:opacity-60"
+          >
+            <MapPin size={14} aria-hidden="true" />
+            {geoBusy ? "Locating…" : "Use my location"}
+          </button>
+        </div>
       </div>
 
       {/* Search */}
@@ -404,79 +560,107 @@ export function WeatherWidget() {
 
       {/* Status region */}
       <div className="mt-6" aria-live="polite" aria-busy={loading}>
-        {loading && (
+        {loading && !forecast && (
           <p className="text-sm text-muted-foreground">Loading forecast…</p>
         )}
-        {!loading && error && (
+        {!loading && error && !forecast && (
           <p className="text-sm text-destructive" role="alert">
             {error}
           </p>
         )}
-        {!loading && !error && forecast && (
-          <div className="grid gap-6 md:grid-cols-[auto_1fr] items-start">
-            <div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl font-serif text-navy-deep">
-                  {Math.round(forecast.current.temperature_2m)}°
-                </span>
-                <span className="text-sm text-muted-foreground">C</span>
+        {forecast && (
+          <div className="grid gap-6 md:grid-cols-[auto_1fr] items-center">
+            <div className="flex items-center gap-5">
+              <div
+                className={`shrink-0 grid place-items-center h-20 w-20 rounded-xl ring-1 ${currentAccent.bg} ${currentAccent.ring}`}
+              >
+                <CurrentIcon size={44} className={currentAccent.fg} aria-hidden="true" />
               </div>
-              <p className="mt-1 text-sm text-foreground/85">
-                {describe(forecast.current.weather_code)}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Feels like {Math.round(forecast.current.apparent_temperature)}°C
-              </p>
+              <div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-6xl font-serif text-navy-deep leading-none">
+                    {Math.round(forecast.current.temperature_2m)}°
+                  </span>
+                  <span className="text-sm text-muted-foreground">C</span>
+                </div>
+                <p className="mt-2 text-sm text-navy-deep font-medium">
+                  {describe(forecast.current.weather_code)}
+                </p>
+              </div>
             </div>
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              <div>
-                <dt className="text-muted-foreground text-xs uppercase tracking-wider">
-                  Wind
-                </dt>
-                <dd>{Math.round(forecast.current.wind_speed_10m)} km/h</dd>
-              </div>
-              <div>
-                <dt className="text-muted-foreground text-xs uppercase tracking-wider">
-                  Precipitation
-                </dt>
-                <dd>{forecast.current.precipitation} mm</dd>
-              </div>
+            <dl className="grid grid-cols-3 gap-2 text-sm">
+              <MetricCard
+                icon={Thermometer}
+                label="Feels like"
+                value={`${Math.round(forecast.current.apparent_temperature)}°C`}
+              />
+              <MetricCard
+                icon={Wind}
+                label="Wind"
+                value={`${Math.round(forecast.current.wind_speed_10m)} km/h`}
+              />
+              <MetricCard
+                icon={Droplets}
+                label="Precip"
+                value={`${forecast.current.precipitation} mm`}
+              />
             </dl>
           </div>
+        )}
+        {error && forecast && (
+          <p className="mt-3 text-xs text-destructive" role="alert">{error}</p>
         )}
       </div>
 
       {/* 5-day */}
-      {!loading && !error && forecast && (
+      {forecast && (
         <div className="mt-8">
-          <p className="eyebrow">Next 5 days</p>
+          <div className="flex items-baseline justify-between">
+            <p className="eyebrow">Next 5 days</p>
+            {lastSuccessAt && (
+              <p className="text-[11px] text-muted-foreground">
+                Refreshed {lastRefreshLabel}
+              </p>
+            )}
+          </div>
           <ol className="mt-3 grid grid-cols-2 sm:grid-cols-5 gap-3">
             {forecast.daily.time.map((day, i) => {
-              const d = new Date(day);
-              const label = new Intl.DateTimeFormat("en-US", {
-                weekday: "short",
-                timeZone: forecast.timezone,
-              }).format(d);
+              const label = formatWallClockWeekday(day);
+              const code = forecast.daily.weather_code[i];
+              const DayIcon = iconFor(code, true);
+              const accent = ACCENT[family(code)];
+              const precip = forecast.daily.precipitation_probability_max[i] ?? 0;
               return (
                 <li
                   key={day}
-                  className="border border-border rounded-md p-3 bg-background/60"
+                  className="border border-border rounded-md p-3 bg-card hover:border-navy-deep/40 transition-colors"
                 >
-                  <p className="text-xs font-medium text-navy-deep">{label}</p>
-                  <p className="mt-1 text-xs text-muted-foreground leading-snug">
-                    {describe(forecast.daily.weather_code[i])}
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-medium text-navy-deep">{label}</p>
+                    <div
+                      className={`grid place-items-center h-7 w-7 rounded-md ${accent.bg}`}
+                    >
+                      <DayIcon size={16} className={accent.fg} aria-hidden="true" />
+                    </div>
+                  </div>
+                  <p
+                    className="mt-2 text-[11px] text-muted-foreground leading-snug line-clamp-2"
+                    title={describe(code)}
+                  >
+                    {describe(code)}
                   </p>
                   <p className="mt-2 text-sm">
-                    <span className="text-navy-deep font-medium">
+                    <span className="text-navy-deep font-semibold">
                       {Math.round(forecast.daily.temperature_2m_max[i])}°
                     </span>
-                    <span className="text-muted-foreground">
-                      {" "}
-                      / {Math.round(forecast.daily.temperature_2m_min[i])}°
+                    <span className="text-muted-foreground text-xs">
+                      {" / "}
+                      {Math.round(forecast.daily.temperature_2m_min[i])}°
                     </span>
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {forecast.daily.precipitation_probability_max[i] ?? 0}% precip
+                  <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <Droplets size={11} className="text-sky-600" aria-hidden="true" />
+                    {precip}%
                   </p>
                 </li>
               );
@@ -497,6 +681,26 @@ export function WeatherWidget() {
         </a>
         .
       </p>
+    </div>
+  );
+}
+
+function MetricCard({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="rounded-md border border-border bg-card px-3 py-2.5">
+      <div className="flex items-center gap-1.5 text-muted-foreground">
+        <Icon size={12} aria-hidden="true" />
+        <span className="text-[10px] uppercase tracking-wider">{label}</span>
+      </div>
+      <p className="mt-1 text-sm font-medium text-navy-deep">{value}</p>
     </div>
   );
 }
