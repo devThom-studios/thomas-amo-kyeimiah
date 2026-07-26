@@ -85,7 +85,7 @@ function About() {
             />
           </div>
           <p className="mt-3 text-xs text-muted-foreground italic">
-            Montreal, 2025.
+            Montreal, 2023.
           </p>
         </aside>
       </section>
