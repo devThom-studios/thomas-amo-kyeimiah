@@ -27,7 +27,7 @@ export const RESEARCH = [
         label: "Thesis (McGill eScholarship)",
         href: "https://escholarship.mcgill.ca/concern/theses/kw52jf57r",
       },
-      { label: "Code (GitHub)", href: "https://github.com" },
+      { label: "Code (GitHub)", href: "https://github.com/devThom-studios" },
     ],
   },
   {
