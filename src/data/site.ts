@@ -156,7 +156,7 @@ export const PROJECTS = [
     description:
       "Climatology, anomaly mapping, and time-series analysis of sea-ice concentration and thickness along the Labrador coast, combining CESM-HR output with Canadian Ice Service observations.",
     stack: ["Python", "Xarray", "Cartopy", "CESM", "ERA5"],
-    href: "https://github.com/devThom-studios",
+    href: "https://github.com/devThom-studios/Sea-Ice-Projection-Nunatsiavut",
   },
   {
     name: "cmip6-sea-ice-assessment",
@@ -164,7 +164,7 @@ export const PROJECTS = [
     description:
       "Python workflow for computing bias metrics and skill scores of CMIP6 sea-ice concentration and thickness against observational datasets, developed at Environment and Climate Change Canada.",
     stack: ["Python", "Xarray", "Pandas", "CMIP6", "Cartopy"],
-    href: "https://github.com/devThom-studios",
+    href: "https://github.com/devThom-studios/Research-Summer-2024",
   },
   {
     name: "climate-diagnostics-toolkit",
@@ -172,7 +172,7 @@ export const PROJECTS = [
     description:
       "Reusable diagnostics for processing NSIDC passive-microwave sea-ice data: regridding, masking, and derived-quantity computation for downstream climate analysis.",
     stack: ["Python", "Xarray", "NumPy", "NSIDC"],
-    href: "https://github.com/devThom-studios",
+    href: "https://github.com/devThom-studios/CDR-NSIDC-Data-Processing",
   },
   {
     name: "southern-ocean-mitgcm",
@@ -180,7 +180,7 @@ export const PROJECTS = [
     description:
       "Idealised MITgcm ocean simulations exploring thermocline structure and circulation response to wind forcing in the Southern Ocean.",
     stack: ["MITgcm", "Fortran", "Python", "ParaView"],
-    href: "https://github.com/devThom-studios",
+    href: "https://github.com/devThom-studios/Ocean-Physics-Modelling-Paper-Semester-Project",
   },
   {
     name: "sir-malaria-model",
@@ -188,7 +188,7 @@ export const PROJECTS = [
     description:
       "Undergraduate research project modelling malaria transmission dynamics with an SIR framework driven by climate variables across Ghana's agro-ecological zones.",
     stack: ["Python", "NumPy", "SciPy", "Matplotlib"],
-    href: "https://github.com/devThom-studios",
+    href: "https://github.com/devThom-studios/SIR-Disease-modelling",
   },
   {
     name: "arctic-pamip-miniproject",
@@ -196,7 +196,6 @@ export const PROJECTS = [
     description:
       "Mini-project completed at ICTP (supervised by Prof. Paul Kushner) using CESM-WACCM4 PAMIP experiments to explore precipitation response to sea-ice loss and CO₂ doubling.",
     stack: ["CESM-WACCM4", "Python", "Xarray", "CDO"],
-    href: "https://github.com/devThom-studios",
   },
 ] as const;
 
