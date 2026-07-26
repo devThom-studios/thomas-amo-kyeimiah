@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import earthHero from "@/assets/earth-system-hero.jpg.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -139,22 +140,37 @@ export function PageHero({
   eyebrow,
   title,
   lead,
+  variant = "calm",
 }: {
   eyebrow: string;
   title: string;
   lead?: string;
+  variant?: HeroVariant;
 }) {
+  const v = HERO_VARIANTS[variant];
   return (
-    <section className="relative border-b border-border surface-frost overflow-hidden">
+    <section className="relative border-b border-border overflow-hidden bg-navy-deep">
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-70 atmosphere-contours"
+        className="absolute inset-0 bg-cover"
+        style={{
+          backgroundImage: `url(${earthHero.url})`,
+          backgroundPosition: v.pos,
+        }}
+      />
+      <div
+        aria-hidden
+        className={`absolute inset-0 bg-gradient-to-b ${v.overlay}`}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-30 atmosphere-contours mix-blend-overlay"
       />
       <div className="container-prose relative py-20 md:py-28 fade-up">
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="mt-4 text-4xl md:text-6xl leading-[1.05] max-w-4xl">{title}</h1>
         {lead && (
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-2xl text-lg text-foreground/80 leading-relaxed">
             {lead}
           </p>
         )}
@@ -162,3 +178,26 @@ export function PageHero({
     </section>
   );
 }
+
+export type HeroVariant =
+  | "about"
+  | "teaching"
+  | "research"
+  | "projects"
+  | "publications"
+  | "articles"
+  | "cv"
+  | "contact"
+  | "calm";
+
+const HERO_VARIANTS: Record<HeroVariant, { pos: string; overlay: string }> = {
+  about:        { pos: "85% 35%", overlay: "from-background/92 via-background/80 to-background" },
+  teaching:     { pos: "90% 40%", overlay: "from-background/92 via-background/80 to-background" },
+  research:     { pos: "15% 55%", overlay: "from-background/88 via-background/78 to-background" },
+  projects:     { pos: "20% 60%", overlay: "from-background/88 via-background/78 to-background" },
+  publications: { pos: "50% 40%", overlay: "from-background/92 via-background/82 to-background" },
+  articles:     { pos: "55% 42%", overlay: "from-background/92 via-background/82 to-background" },
+  cv:           { pos: "35% 85%", overlay: "from-background/94 via-background/84 to-background" },
+  contact:      { pos: "30% 85%", overlay: "from-background/94 via-background/84 to-background" },
+  calm:         { pos: "50% 50%", overlay: "from-background/90 via-background/80 to-background" },
+};
