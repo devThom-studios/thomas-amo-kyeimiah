@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { RESEARCH } from "@/data/site";
+import { Link } from "@tanstack/react-router";
+import { NAIN_FEATURE_IMAGE } from "@/data/nain-fieldwork";
 
 export const Route = createFileRoute("/research")({
   head: () => ({
@@ -98,6 +100,60 @@ function Research() {
             </div>
           </article>
         ))}
+
+        {/* Fieldwork feature */}
+        <article
+          id="fieldwork"
+          className="grid gap-10 md:grid-cols-[5fr_7fr] items-stretch border-t border-border pt-16"
+        >
+          <Link
+            to="/fieldwork/nain-2024"
+            className="block rounded-md overflow-hidden border border-border bg-mist group focus:outline-none focus:ring-2 focus:ring-accent"
+            aria-label="View the Nain field campaign"
+          >
+            <img
+              src={NAIN_FEATURE_IMAGE.src}
+              alt={NAIN_FEATURE_IMAGE.alt}
+              width={1600}
+              height={1200}
+              loading="lazy"
+              className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            />
+          </Link>
+          <div>
+            <p className="eyebrow">Fieldwork · February 2024</p>
+            <h2 className="mt-3 text-2xl md:text-3xl leading-snug">
+              Nain Field Campaign — Nunatsiavut, Labrador
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-foreground/85">
+              A February 2024 campaign on the sea ice outside Nain, in
+              support of my M.Sc. research at McGill. I installed and
+              maintained an automatic weather station, visible and infrared
+              cameras, and a radiometer, and worked with researchers and
+              local partners to collect in-situ observations that anchor
+              satellite, ERA5, and CESM comparisons for regional sea-ice
+              projections.
+            </p>
+            <div className="mt-8 grid sm:grid-cols-2 gap-6 text-sm">
+              <div>
+                <p className="eyebrow mb-2">Location</p>
+                <p>Nain, Nunatsiavut, Labrador</p>
+              </div>
+              <div>
+                <p className="eyebrow mb-2">Context</p>
+                <p>M.Sc. research, McGill University</p>
+              </div>
+            </div>
+            <div className="mt-8">
+              <Link
+                to="/fieldwork/nain-2024"
+                className="hover-underline text-navy-deep text-sm"
+              >
+                View field campaign →
+              </Link>
+            </div>
+          </div>
+        </article>
       </section>
     </SiteLayout>
   );
