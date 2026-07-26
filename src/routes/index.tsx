@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-atmosphere.jpg";
+import earthHero from "@/assets/earth-system-hero.jpg.asset.json";
 import { SiteLayout } from "@/components/site-layout";
 import { RESEARCH, RESEARCH_INTERESTS, PUBLICATIONS, SOCIALS } from "@/data/site";
 import { WeatherWidget } from "@/components/weather-widget";
@@ -22,7 +22,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: earthHero.url, fetchpriority: "high" },
+    ],
   }),
   component: Home,
 });
@@ -33,23 +36,26 @@ function Home() {
   return (
     <SiteLayout>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border atmosphere-hero">
-        <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-60" />
+      <section className="relative overflow-hidden border-b border-border bg-navy-deep">
         <img
-          src={heroImg}
+          src={earthHero.url}
           alt=""
           aria-hidden
-          width={1920}
-          height={1200}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.10] mix-blend-luminosity"
+          width={1836}
+          height={872}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-[65%_35%] md:object-[60%_40%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        {/* Layered overlays: darker at the top-left for text legibility, fading to the site background. */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-navy-deep/85 via-navy-deep/55 to-background/85" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
+        <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay" />
         <div className="container-prose relative py-24 md:py-36 fade-up">
           <p className="eyebrow">Atmospheric & Climate Science · Earth System Data Science</p>
-          <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl">
+          <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl text-ivory drop-shadow-[0_2px_20px_rgba(10,20,40,0.6)]">
             Thomas Amo Kyeimiah
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-foreground/85">
+          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ivory/90">
             I am an atmospheric and climate data scientist, recently graduated
             with an M.Sc. in Atmospheric and Oceanic Sciences from McGill
             University. My work focuses on sea-ice and polar climate,
@@ -69,7 +75,7 @@ function Home() {
               href={SOCIALS.scholar}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
+              className="inline-flex items-center gap-2 rounded-md border border-ivory/30 bg-background/20 text-ivory backdrop-blur-sm px-5 py-2.5 text-sm font-medium hover:bg-background/40 transition-colors"
             >
               Google Scholar
             </a>
@@ -77,7 +83,7 @@ function Home() {
               href={SOCIALS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
+              className="inline-flex items-center gap-2 rounded-md border border-ivory/30 bg-background/20 text-ivory backdrop-blur-sm px-5 py-2.5 text-sm font-medium hover:bg-background/40 transition-colors"
             >
               GitHub
             </a>
@@ -85,7 +91,7 @@ function Home() {
               href={SOCIALS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/60 px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
+              className="inline-flex items-center gap-2 rounded-md border border-ivory/30 bg-background/20 text-ivory backdrop-blur-sm px-5 py-2.5 text-sm font-medium hover:bg-background/40 transition-colors"
             >
               LinkedIn
             </a>
