@@ -1,11 +1,11 @@
-import img4737 from "@/assets/nain/IMG_4737.webp.asset.json";
-import img4738 from "@/assets/nain/IMG_4738.webp.asset.json";
-import img4746 from "@/assets/nain/IMG_4746_2.webp.asset.json";
-import img4759 from "@/assets/nain/IMG_4759.webp.asset.json";
-import img4762 from "@/assets/nain/IMG_4762.webp.asset.json";
-import img4776 from "@/assets/nain/IMG_4776.webp.asset.json";
-import img4777 from "@/assets/nain/IMG_4777.webp.asset.json";
-import img4779 from "@/assets/nain/IMG_4779_2.webp.asset.json";
+import img4737 from "@/assets/nain/IMG_4737.jpg.asset.json";
+import img4738 from "@/assets/nain/IMG_4738.jpg.asset.json";
+import img4746 from "@/assets/nain/IMG_4746_2.jpg.asset.json";
+import img4759 from "@/assets/nain/IMG_4759.jpg.asset.json";
+import img4762 from "@/assets/nain/IMG_4762.jpg.asset.json";
+import img4776 from "@/assets/nain/IMG_4776.jpg.asset.json";
+import img4777 from "@/assets/nain/IMG_4777.jpg.asset.json";
+import img4779 from "@/assets/nain/IMG_4779_2.jpg.asset.json";
 
 export type NainPhoto = {
   src: string;
