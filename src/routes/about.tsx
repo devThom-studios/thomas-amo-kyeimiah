@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import portrait from "@/assets/thomas-winter-montreal.jpg.asset.json";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 
@@ -54,6 +55,13 @@ function About() {
             scientists. Alongside research, I currently review AI-generated
             scientific workflows and data visualisations for technical accuracy
             and reproducibility.
+          </p>
+          <p>
+            In February 2024 I travelled to Nain, Nunatsiavut, for the{" "}
+            <Link to="/fieldwork/nain-2024" className="hover-underline text-navy-deep">
+              Nain field campaign
+            </Link>
+            , installing instruments on the sea ice and working with researchers and local partners in Labrador.
           </p>
           <div className="pt-6 grid sm:grid-cols-2 gap-8">
             <div>
