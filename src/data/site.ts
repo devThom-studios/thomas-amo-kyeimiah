@@ -1,6 +1,6 @@
 import seaice from "@/assets/research/Fig4_ensemble_mean.jpg.asset.json";
 import cmip6 from "@/assets/research/CMIP6_bias_assessment.png.asset.json";
-import malaria from "@/assets/research/Ghana_agro_climatic_zones.jpg.asset.json";
+import malaria from "@/assets/research/Ghana_monthly_vectorial_capacity.jpg.asset.json";
 
 export const RESEARCH = [
   {
