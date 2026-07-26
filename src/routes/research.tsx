@@ -38,14 +38,12 @@ function Research() {
             className="grid gap-10 md:grid-cols-[5fr_7fr] items-start"
           >
             <div className={i % 2 === 1 ? "md:order-2" : ""}>
-              <div className="rounded-md overflow-hidden border border-border bg-mist">
+              <div className="rounded-md overflow-hidden border border-border bg-mist flex items-center justify-center aspect-[4/3] p-4">
                 <img
                   src={r.image}
                   alt={r.imageAlt}
-                  width={1200}
-                  height={800}
                   loading="lazy"
-                  className="w-full h-auto object-cover"
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
                 />
               </div>
               <p className="mt-3 text-xs text-muted-foreground italic">
