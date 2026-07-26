@@ -1,14 +1,15 @@
-import seaice from "@/assets/research-sst.jpg";
-import cmip6 from "@/assets/research-abl.jpg";
-import malaria from "@/assets/research-monsoon.jpg";
+import seaice from "@/assets/research/Fig4_ensemble_mean.jpg.asset.json";
+import cmip6 from "@/assets/research/CMIP6_bias_assessment.png.asset.json";
+import malaria from "@/assets/research/Ghana_agro_climatic_zones.jpg.asset.json";
 
 export const RESEARCH = [
   {
     slug: "sea-ice-nunatsiavut",
     title: "Projection of sea-ice conditions in Nunatsiavut (Labrador)",
     period: "2022 – 2024 · MSc thesis, McGill University",
-    image: seaice,
-    imageAlt: "Arctic sea ice cover along the Labrador coast.",
+    image: seaice.url,
+    imageAlt:
+      "Monthly maps (Dec–Jul) of sea-ice thickness along the Labrador coast comparing Canadian Ice Service observations with CESM-HR ensemble-mean output.",
     summary:
       "Projected changes in landfast and pack ice along the Nunatsiavut coast by combining high-resolution CESM output with Canadian Ice Service in-situ observations, and built a lightweight ERA5 degree-day model of sea-ice onset and melt validated against thickness records.",
     methods: [
@@ -34,8 +35,9 @@ export const RESEARCH = [
     slug: "cmip6-sea-ice-assessment",
     title: "CMIP6 sea-ice concentration and thickness assessment",
     period: "2024 · Environment and Climate Change Canada",
-    image: cmip6,
-    imageAlt: "Gridded sea-ice concentration field from a climate model.",
+    image: cmip6.url,
+    imageAlt:
+      "Maps of Arctic sea-ice concentration means and CMIP6 bias against HadISST and OSTIA for the 10th and 90th percentiles (1982–2014).",
     summary:
       "Evaluated CMIP6 sea-ice concentration and thickness against observational datasets using Python-based climate data workflows, supporting model diagnostics and inter-model comparison at ECCC.",
     methods: [
@@ -55,8 +57,9 @@ export const RESEARCH = [
     slug: "malaria-vectorial-capacity",
     title: "Climate change and malaria vectorial capacity in Ghana",
     period: "2021 · BSc thesis, KNUST",
-    image: malaria,
-    imageAlt: "Agro-ecological zones of West Africa with temperature overlay.",
+    image: malaria.url,
+    imageAlt:
+      "Map of Ghana's agro-climatic zones (Sudan Savannah, Guinea Savannah, Transition, Forest, Coastal) with temperature overlay.",
     summary:
       "Investigated how temperature change affects the vectorial capacity of Anopheles mosquitoes across the agro-ecological zones of Ghana, combining climate data analysis with statistical transmission modelling. Contributed to a peer-reviewed study on warming and mosquito lifespan.",
     methods: [
