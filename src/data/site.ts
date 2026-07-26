@@ -282,8 +282,10 @@ export const RESEARCH_INTERESTS = [
   "Hydroclimatology and climate diagnostics",
   "CMIP6 model evaluation and bias analysis",
   "Climate–health interactions",
-  "Machine learning for Earth system science",
+  "Machine learning and Explainable AI for Earth system science",
   "Geospatial and reproducible scientific computing",
+  "Air quality",
+  "Synoptic and mesoscale meteorology",
 ];
 
 export const SOCIALS = {
