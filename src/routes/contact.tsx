@@ -43,22 +43,22 @@ function Contact() {
             <p className="eyebrow mb-2">Elsewhere</p>
             <ul className="space-y-2 text-base">
               <li>
-                <a href={SOCIALS.scholar} target="_blank" rel="noreferrer" className="hover-underline">
+                <a href={SOCIALS.scholar} target="_blank" rel="noopener noreferrer" className="hover-underline">
                   Google Scholar →
                 </a>
               </li>
               <li>
-                <a href={SOCIALS.orcid} target="_blank" rel="noreferrer" className="hover-underline">
+                <a href={SOCIALS.orcid} target="_blank" rel="noopener noreferrer" className="hover-underline">
                   ORCID →
                 </a>
               </li>
               <li>
-                <a href={SOCIALS.github} target="_blank" rel="noreferrer" className="hover-underline">
+                <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className="hover-underline">
                   GitHub →
                 </a>
               </li>
               <li>
-                <a href={SOCIALS.linkedin} target="_blank" rel="noreferrer" className="hover-underline">
+                <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="hover-underline">
                   LinkedIn →
                 </a>
               </li>
