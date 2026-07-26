@@ -52,20 +52,12 @@ function CV() {
         lead="A summary version is below. The full PDF is available on request."
       />
       <div className="container-prose py-16 space-y-16 max-w-4xl">
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-md bg-navy-deep text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-navy transition-colors"
-          >
-            Download PDF
-          </a>
-          <a
-            href="mailto:kyeimiahthomasamo97@gmail.com"
-            className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
-          >
-            Request full CV
-          </a>
-        </div>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:border-navy-deep transition-colors"
+        >
+          Request full CV
+        </Link>
 
         <Block title="Education">
           <Row left="2022 – 2024">
