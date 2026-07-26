@@ -44,7 +44,7 @@ function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
         <div className="container-prose relative py-24 md:py-36 fade-up">
-          <p className="eyebrow">Atmospheric Science · Climate Data Science</p>
+          <p className="eyebrow">Atmospheric & Climate Science · Earth System Data Science</p>
           <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl">
             Thomas Amo Kyeimiah
           </h1>
