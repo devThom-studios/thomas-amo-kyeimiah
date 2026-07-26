@@ -45,18 +45,19 @@ function Research() {
               <button
                 type="button"
                 onClick={() => setOpenFigure({ src: r.image, alt: r.imageAlt })}
-                className="group relative block w-full rounded-md overflow-hidden border border-border bg-mist focus:outline-none focus:ring-2 focus:ring-accent"
+                className="group block w-full rounded-md overflow-hidden border border-border bg-mist focus:outline-none focus:ring-2 focus:ring-accent"
                 aria-label={`View full figure: ${r.imageAlt}`}
               >
-                <div className="flex items-center justify-center aspect-[4/3] p-6">
+                <div className="p-3 sm:p-4">
                   <img
                     src={r.image}
                     alt={r.imageAlt}
                     loading="lazy"
-                    className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="mx-auto w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                    style={{ maxHeight: "70vh" }}
                   />
                 </div>
-                <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1.5 rounded-full bg-navy-deep/85 text-white text-xs px-2.5 py-1 opacity-90 group-hover:opacity-100">
+                <span className="flex items-center justify-center gap-1.5 border-t border-border bg-background/60 py-2 text-xs text-navy-deep">
                   <Maximize2 size={12} aria-hidden="true" />
                   View full figure
                 </span>
