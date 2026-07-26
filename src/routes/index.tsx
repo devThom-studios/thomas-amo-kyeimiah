@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import earthHero from "@/assets/earth-system-hero.jpg.asset.json";
+import earthHero from "@/assets/heroes/home.jpg.asset.json";
 import { SiteLayout } from "@/components/site-layout";
 import { RESEARCH, RESEARCH_INTERESTS, PUBLICATIONS, SOCIALS } from "@/data/site";
 import { WeatherWidget } from "@/components/weather-widget";
@@ -41,10 +41,8 @@ function Home() {
           src={earthHero.url}
           alt=""
           aria-hidden
-          width={1836}
-          height={872}
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-[65%_35%] md:object-[60%_40%]"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-[70%_45%]"
         />
         {/* Consistent navy overlay — same treatment as the Nain hero. */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
