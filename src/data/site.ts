@@ -278,14 +278,14 @@ export const ARTICLES = [
 ];
 
 export const RESEARCH_INTERESTS = [
-  "Sea ice and polar climate",
   "Hydroclimatology and climate diagnostics",
-  "CMIP6 model evaluation and bias analysis",
-  "Climate–health interactions",
   "Machine learning and Explainable AI for Earth system science",
-  "Geospatial and reproducible scientific computing",
+  "Sea ice and polar climate",
   "Air quality",
+  "Climate model evaluation and bias analysis",
   "Synoptic and mesoscale meteorology",
+  "Climate–health interactions",
+  "Geospatial and reproducible scientific computing",
 ];
 
 export const SOCIALS = {
