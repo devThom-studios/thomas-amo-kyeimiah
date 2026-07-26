@@ -51,14 +51,16 @@ function Projects() {
                       {s}
                     </span>
                   ))}
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-auto text-sm hover-underline text-navy-deep"
-                  >
-                    View repository →
-                  </a>
+                  {p.href && (
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto text-sm hover-underline text-navy-deep"
+                    >
+                      View repository →
+                    </a>
+                  )}
                 </div>
               </div>
             </li>
