@@ -45,7 +45,7 @@ function Research() {
           <article
             key={r.slug}
             id={r.slug}
-            className="grid gap-10 md:grid-cols-[5fr_7fr] items-start"
+            className="scroll-mt-24 grid gap-10 md:grid-cols-[5fr_7fr] items-start"
           >
             <div className={i % 2 === 1 ? "md:order-2" : ""}>
               <button
