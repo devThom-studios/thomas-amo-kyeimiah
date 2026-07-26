@@ -159,10 +159,7 @@ export function PageHero({
         }}
       />
       {/* Localized wash behind the text column (left side) for contrast; right side stays clear. */}
-      <div
-        aria-hidden
-        className={`absolute inset-0 bg-gradient-to-r ${v.washH} md:${v.washHmd}`}
-      />
+      <div aria-hidden className={`absolute inset-0 bg-gradient-to-r ${v.wash}`} />
       {/* Soft fade into the page background at the bottom edge only. */}
       <div
         aria-hidden
