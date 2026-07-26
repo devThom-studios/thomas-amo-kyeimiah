@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 const NAV = [
@@ -13,6 +13,22 @@ const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+// Map nested routes to the top-level nav item that should be marked active.
+const NESTED_ACTIVE: Array<{ prefix: string; navTo: string }> = [
+  { prefix: "/fieldwork", navTo: "/research" },
+];
+
+function isNavActive(navTo: string, pathname: string): boolean {
+  if (navTo === "/") return pathname === "/";
+  if (pathname === navTo || pathname.startsWith(navTo + "/")) return true;
+  for (const { prefix, navTo: target } of NESTED_ACTIVE) {
+    if (target === navTo && (pathname === prefix || pathname.startsWith(prefix + "/"))) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -24,6 +40,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 }
 
 function SiteHeader() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container-prose flex items-center justify-between h-16">
@@ -32,35 +49,41 @@ function SiteHeader() {
             Thomas Amo Kyeimiah
           </span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-7 text-sm">
-          {NAV.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              activeProps={{ className: "text-navy-deep" }}
-              inactiveProps={{ className: "text-muted-foreground hover:text-navy-deep" }}
-              activeOptions={{ exact: item.to === "/" }}
-              className="transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <details className="lg:hidden relative">
-          <summary className="list-none cursor-pointer text-sm text-navy-deep">Menu</summary>
-          <div className="absolute right-0 top-8 w-56 rounded-md border border-border bg-card shadow-lg p-3 flex flex-col text-sm">
-            {NAV.map((item) => (
+        <nav className="hidden lg:flex items-center gap-1 text-sm" aria-label="Primary">
+          {NAV.map((item) => {
+            const active = isNavActive(item.to, pathname);
+            return (
               <Link
                 key={item.to}
                 to={item.to}
-                className="py-1.5 text-muted-foreground hover:text-navy-deep"
+                aria-current={active ? "page" : undefined}
+                className={`nav-link ${active ? "nav-link-active" : ""}`}
               >
                 {item.label}
               </Link>
-            ))}
+            );
+          })}
+        </nav>
+        <details className="lg:hidden relative">
+          <summary className="list-none cursor-pointer text-sm text-navy-deep">Menu</summary>
+          <div className="absolute right-0 top-8 w-56 rounded-md border border-border bg-card shadow-lg p-2 flex flex-col text-sm">
+            {NAV.map((item) => {
+              const active = isNavActive(item.to, pathname);
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  aria-current={active ? "page" : undefined}
+                  className={`nav-link-mobile ${active ? "nav-link-mobile-active" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
         </details>
       </div>
+      <div className="h-px divider-sky" aria-hidden />
     </header>
   );
 }
@@ -118,8 +141,12 @@ export function PageHero({
   lead?: string;
 }) {
   return (
-    <section className="border-b border-border bg-mist/40">
-      <div className="container-prose py-20 md:py-28 fade-up">
+    <section className="relative border-b border-border surface-frost overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-70 atmosphere-contours"
+      />
+      <div className="container-prose relative py-20 md:py-28 fade-up">
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="mt-4 text-4xl md:text-6xl leading-[1.05] max-w-4xl">{title}</h1>
         {lead && (

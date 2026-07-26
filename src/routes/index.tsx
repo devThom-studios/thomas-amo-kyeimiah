@@ -33,16 +33,17 @@ function Home() {
   return (
     <SiteLayout>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
+      <section className="relative overflow-hidden border-b border-border atmosphere-hero">
+        <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-60" />
         <img
           src={heroImg}
           alt=""
           aria-hidden
           width={1920}
           height={1200}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.18]"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.10] mix-blend-luminosity"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="container-prose relative py-24 md:py-36 fade-up">
           <p className="eyebrow">Atmospheric & Climate Science · Earth System Data Science</p>
           <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl">
@@ -111,7 +112,8 @@ function Home() {
       </section>
 
       {/* Featured research */}
-      <section className="border-t border-border bg-mist/40">
+      <section className="relative border-t border-border surface-frost">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px divider-sky" />
         <div className="container-prose py-20 md:py-28">
           <div className="flex items-end justify-between gap-6 flex-wrap">
             <div>
@@ -189,7 +191,8 @@ function Home() {
       </section>
 
       {/* Weather */}
-      <section className="border-t border-border bg-mist/40">
+      <section className="relative border-t border-border surface-frost">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px divider-sky" />
         <div className="container-prose py-20 md:py-28">
           <div className="grid gap-10 md:grid-cols-[1fr_2fr] items-start">
             <div>
