@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-atmosphere.jpg";
 import { SiteLayout } from "@/components/site-layout";
 import { RESEARCH, RESEARCH_INTERESTS, PUBLICATIONS, SOCIALS } from "@/data/site";
+import { WeatherWidget } from "@/components/weather-widget";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -184,6 +185,23 @@ function Home() {
               </Link>
             </div>
           </article>
+        </div>
+      </section>
+
+      {/* Weather */}
+      <section className="border-t border-border bg-mist/40">
+        <div className="container-prose py-20 md:py-28">
+          <div className="grid gap-10 md:grid-cols-[1fr_2fr] items-start">
+            <div>
+              <p className="eyebrow">Live atmosphere</p>
+              <h2 className="mt-3 text-3xl md:text-4xl">Current weather</h2>
+              <p className="mt-3 text-sm text-muted-foreground max-w-sm">
+                A small window on the atmosphere I study — default view is
+                Montreal. Search any city or use your location.
+              </p>
+            </div>
+            <WeatherWidget />
+          </div>
         </div>
       </section>
     </SiteLayout>
