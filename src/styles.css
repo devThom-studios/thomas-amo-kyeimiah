@@ -297,7 +297,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; }
-  .route-transition,
   .atmos-layer-a, .atmos-layer-b,
   .lightbox-backdrop-in, .lightbox-figure-in,
   .wx-sun-glow, .wx-cloud-a, .wx-cloud-b,
