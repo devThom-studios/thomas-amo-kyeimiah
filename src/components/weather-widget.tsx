@@ -18,6 +18,7 @@ import {
   RefreshCw,
   type LucideIcon,
 } from "lucide-react";
+import { WeatherAmbient } from "@/components/weather-ambient";
 
 type GeoResult = {
   id: number;
@@ -443,10 +444,11 @@ export function WeatherWidget() {
   return (
     <div
       ref={rootRef}
-      className="border border-border rounded-md bg-card p-6 md:p-8"
+      className="relative overflow-hidden border border-border rounded-md bg-card p-6 md:p-8"
       aria-labelledby="weather-widget-title"
     >
-      <div className="flex items-start justify-between gap-4 flex-wrap">
+      <WeatherAmbient family={currentFamily} isDay={currentIsDay} />
+      <div className="relative flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="eyebrow">Current conditions</p>
           <h3

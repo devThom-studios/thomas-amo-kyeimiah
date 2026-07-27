@@ -3,6 +3,7 @@ import earthHero from "@/assets/heroes/home.jpg.asset.json";
 import { SiteLayout } from "@/components/site-layout";
 import { RESEARCH, RESEARCH_INTERESTS, PUBLICATIONS, SOCIALS } from "@/data/site";
 import { WeatherWidget } from "@/components/weather-widget";
+import { HeroAtmosphere } from "@/components/hero-atmosphere";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,6 +50,7 @@ function Home() {
         {/* Consistent navy overlay — same treatment as the Nain hero. */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
         <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay" />
+        <HeroAtmosphere />
         <div className="container-prose relative py-24 md:py-36 fade-up">
           <p className="eyebrow text-white">Atmospheric & Climate Science · Earth System Data Science</p>
           <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl text-ivory drop-shadow-[0_2px_20px_rgba(10,20,40,0.6)]">
