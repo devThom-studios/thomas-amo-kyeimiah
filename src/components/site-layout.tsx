@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import aboutHero from "@/assets/heroes/about.jpg.asset.json";
 import researchHero from "@/assets/heroes/research.jpg.asset.json";
 import publicationsHero from "@/assets/heroes/publications.jpg.asset.json";
@@ -40,8 +40,14 @@ function isNavActive(navTo: string, pathname: string): boolean {
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-navy-deep focus:px-4 focus:py-2 focus:text-sm focus:text-ivory"
+      >
+        Skip to main content
+      </a>
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main id="main" className="flex-1">{children}</main>
       <SiteFooter />
     </div>
   );
@@ -49,6 +55,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const mobileDetailsRef = useRef<HTMLDetailsElement>(null);
+  // Auto-close the mobile disclosure whenever the route changes.
+  useEffect(() => {
+    if (mobileDetailsRef.current) mobileDetailsRef.current.open = false;
+  }, [pathname]);
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container-prose flex items-center justify-between h-16">
@@ -76,7 +87,7 @@ function SiteHeader() {
             );
           })}
         </nav>
-        <details className="lg:hidden relative">
+        <details ref={mobileDetailsRef} className="lg:hidden relative">
           <summary className="list-none cursor-pointer text-sm text-navy-deep">Menu</summary>
           <div className="absolute right-0 top-8 w-56 rounded-md border border-border bg-card shadow-lg p-2 flex flex-col text-sm">
             {NAV.map((item) => {
@@ -137,7 +148,7 @@ function SiteFooter() {
       </div>
       <div className="container-prose py-6 border-t border-border flex flex-wrap justify-between gap-3 text-xs text-muted-foreground">
         <p>© {new Date().getFullYear()} Thomas Amo Kyeimiah. All rights reserved.</p>
-        <p>Last updated {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}.</p>
+        <p>Built with care in Montreal.</p>
       </div>
     </footer>
   );
