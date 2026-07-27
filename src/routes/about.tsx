@@ -66,14 +66,14 @@ function About() {
           </p>
           <div className="pt-6 grid sm:grid-cols-2 gap-8">
             <div>
-              <p className="eyebrow mb-2">Education</p>
+              <h2 className="eyebrow mb-2">Education</h2>
               <ul className="space-y-2 text-base">
                 <li>M.Sc. Atmospheric &amp; Oceanic Sciences, McGill University (2024)</li>
                 <li>B.Sc. Meteorology &amp; Climate Science, KNUST (First-Class Honours, 2021)</li>
               </ul>
             </div>
             <div>
-              <p className="eyebrow mb-2">Affiliations</p>
+              <h2 className="eyebrow mb-2">Affiliations</h2>
               <ul className="space-y-2 text-base">
                 <li>American Geophysical Union (AGU)</li>
                 <li>Ghana Meteorological Society (GhMS)</li>

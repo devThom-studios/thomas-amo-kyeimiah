@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing.",
+          "Atmospheric and climate scientist working on polar climate, hydroclimatology, climate–health, and reproducible Earth system data science.",
       },
       { name: "author", content: "Thomas Amo Kyeimiah" },
       { property: "og:site_name", content: "KyeimiahLab" },
@@ -90,8 +90,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
       { name: "twitter:title", content: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
-      { property: "og:description", content: "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing." },
-      { name: "twitter:description", content: "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing." },
+      { property: "og:description", content: "Atmospheric and climate scientist working on polar climate, hydroclimatology, climate–health, and reproducible Earth system data science." },
+      { name: "twitter:description", content: "Atmospheric and climate scientist working on polar climate, hydroclimatology, climate–health, and reproducible Earth system data science." },
       { property: "og:image", content: "https://kyeimiahlab.com/og-image.png" },
       { property: "og:image:type", content: "image/png" },
       { property: "og:image:width", content: "1200" },
@@ -110,6 +110,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Thomas Amo Kyeimiah",
+          jobTitle: "Atmospheric & Climate Scientist",
+          url: "https://kyeimiahlab.com/",
+          image: "https://kyeimiahlab.com/og-image.png",
+          alumniOf: [
+            { "@type": "CollegeOrUniversity", name: "McGill University" },
+            { "@type": "CollegeOrUniversity", name: "Kwame Nkrumah University of Science and Technology" },
+          ],
+          sameAs: [
+            "https://scholar.google.com/citations?user=Wh2jRRYAAAAJ&hl=en",
+            "https://www.linkedin.com/in/thomas-amo-kyeimiah-msc-87b602166/",
+            "https://github.com/devThom-studios",
+            "https://orcid.org/0009-0002-5080-0818",
+          ],
+        }),
       },
     ],
   }),
