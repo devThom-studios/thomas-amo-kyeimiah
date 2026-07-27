@@ -92,12 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
       { property: "og:description", content: "Atmospheric and climate scientist working on polar climate, hydroclimatology, climate–health, and reproducible Earth system data science." },
       { name: "twitter:description", content: "Atmospheric and climate scientist working on polar climate, hydroclimatology, climate–health, and reproducible Earth system data science." },
-      { property: "og:image", content: "https://kyeimiahlab.com/og-image.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ae9RtM1w70cW9Lpg9Eq2oxwhzvB2/social-images/social-1785189672948-KyeimiahLab-WhatsApp.webp" },
       { property: "og:image:type", content: "image/png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "KyeimiahLab — Thomas Amo Kyeimiah, Atmospheric & Climate Scientist" },
-      { name: "twitter:image", content: "https://kyeimiahlab.com/og-image.png" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ae9RtM1w70cW9Lpg9Eq2oxwhzvB2/social-images/social-1785189672948-KyeimiahLab-WhatsApp.webp" },
       { name: "twitter:image:alt", content: "KyeimiahLab — Thomas Amo Kyeimiah, Atmospheric & Climate Scientist" },
     ],
     links: [
@@ -111,6 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
     ],
     scripts: [
       {

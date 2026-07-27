@@ -10,8 +10,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://kyeimiahlab.com/" },
-      { property: "og:image", content: "https://kyeimiahlab.com/og-image.png" },
-      { name: "twitter:image", content: "https://kyeimiahlab.com/og-image.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ae9RtM1w70cW9Lpg9Eq2oxwhzvB2/social-images/social-1785189672948-KyeimiahLab-WhatsApp.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ae9RtM1w70cW9Lpg9Eq2oxwhzvB2/social-images/social-1785189672948-KyeimiahLab-WhatsApp.webp" },
     ],
     links: [
       { rel: "canonical", href: "https://kyeimiahlab.com/" },
