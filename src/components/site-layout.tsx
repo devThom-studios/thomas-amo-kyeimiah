@@ -58,13 +58,40 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const mobileDetailsRef = useRef<HTMLDetailsElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  // Auto-close the mobile disclosure whenever the route changes.
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  // Auto-close on route change.
   useEffect(() => {
-    if (mobileDetailsRef.current) mobileDetailsRef.current.open = false;
     setMobileOpen(false);
   }, [pathname]);
+  // Escape to close + outside click.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as Node;
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(t) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(t)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [mobileOpen]);
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="container-prose flex items-center justify-between h-16">
@@ -92,14 +119,15 @@ function SiteHeader() {
             );
           })}
         </nav>
-        <details
-          ref={mobileDetailsRef}
-          className="lg:hidden relative"
-          onToggle={(e) => setMobileOpen((e.currentTarget as HTMLDetailsElement).open)}
-        >
-          <summary
-            className="list-none cursor-pointer inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-md text-navy-deep hover:bg-[color-mix(in_oklab,var(--sky)_10%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)]"
+        <div className="lg:hidden relative">
+          <button
+            ref={buttonRef}
+            type="button"
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-menu"
+            onClick={() => setMobileOpen((o) => !o)}
+            className="inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-md text-navy-deep hover:bg-[color-mix(in_oklab,var(--sky)_10%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)]"
           >
             {mobileOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -113,23 +141,30 @@ function SiteHeader() {
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             )}
-          </summary>
-          <div className="absolute right-0 top-8 w-56 rounded-md border border-border bg-card shadow-lg p-2 flex flex-col text-sm">
-            {NAV.map((item) => {
-              const active = isNavActive(item.to, pathname);
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  aria-current={active ? "page" : undefined}
-                  className={`nav-link-mobile ${active ? "nav-link-mobile-active" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-        </details>
+          </button>
+          {mobileOpen && (
+            <div
+              ref={menuRef}
+              id="mobile-nav-menu"
+              className="absolute right-0 top-12 w-56 rounded-md border border-border bg-card shadow-lg p-2 flex flex-col text-sm"
+            >
+              {NAV.map((item) => {
+                const active = isNavActive(item.to, pathname);
+                return (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setMobileOpen(false)}
+                    className={`nav-link-mobile ${active ? "nav-link-mobile-active" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
       <div className="h-px divider-sky" aria-hidden />
     </header>
