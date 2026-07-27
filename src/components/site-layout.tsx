@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import aboutHero from "@/assets/heroes/about.jpg.asset.json";
 import researchHero from "@/assets/heroes/research.jpg.asset.json";
 import publicationsHero from "@/assets/heroes/publications.jpg.asset.json";
@@ -49,9 +49,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       </a>
       <SiteHeader />
       <main id="main" className="flex-1">
-        <div key={pathname} className="route-transition">
-          {children}
-        </div>
+        {children}
       </main>
       <SiteFooter />
     </div>
@@ -61,9 +59,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const mobileDetailsRef = useRef<HTMLDetailsElement>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   // Auto-close the mobile disclosure whenever the route changes.
   useEffect(() => {
     if (mobileDetailsRef.current) mobileDetailsRef.current.open = false;
+    setMobileOpen(false);
   }, [pathname]);
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border">
@@ -92,8 +92,28 @@ function SiteHeader() {
             );
           })}
         </nav>
-        <details ref={mobileDetailsRef} className="lg:hidden relative">
-          <summary className="list-none cursor-pointer text-sm text-navy-deep">Menu</summary>
+        <details
+          ref={mobileDetailsRef}
+          className="lg:hidden relative"
+          onToggle={(e) => setMobileOpen((e.currentTarget as HTMLDetailsElement).open)}
+        >
+          <summary
+            className="list-none cursor-pointer inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-md text-navy-deep hover:bg-[color-mix(in_oklab,var(--sky)_10%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)]"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
+            {mobileOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </summary>
           <div className="absolute right-0 top-8 w-56 rounded-md border border-border bg-card shadow-lg p-2 flex flex-col text-sm">
             {NAV.map((item) => {
               const active = isNavActive(item.to, pathname);
