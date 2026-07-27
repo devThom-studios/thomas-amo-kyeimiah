@@ -7,23 +7,25 @@ import { WeatherWidget } from "@/components/weather-widget";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Thomas Amo Kyeimiah — Atmospheric & Climate Data Scientist" },
+      { title: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
       {
         name: "description",
         content:
-          "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall.",
+          "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing.",
       },
-      { property: "og:title", content: "Thomas Amo Kyeimiah — Atmospheric & Climate Data Scientist" },
+      { property: "og:title", content: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
       {
         property: "og:description",
         content:
-          "Personal research site of Thomas Amo Kyeimiah — climate dynamics, machine learning for Earth system science, and geospatial analysis of African rainfall.",
+          "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing.",
       },
-      { property: "og:type", content: "profile" },
-      { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://kyeimiahlab.com/" },
+      { property: "og:image", content: "https://kyeimiahlab.com/og-image.png" },
+      { name: "twitter:image", content: "https://kyeimiahlab.com/og-image.png" },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: "https://kyeimiahlab.com/" },
       { rel: "preload", as: "image", href: earthHero.url, fetchpriority: "high" },
     ],
   }),
