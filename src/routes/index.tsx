@@ -55,7 +55,7 @@ function Home() {
             Thomas Amo Kyeimiah
           </h1>
           <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ivory/90">
-            I am an atmospheric and climate data scientist, recently graduated with an M.Sc. in Atmospheric and Oceanic Sciences from McGill University. I also hold a B.Sc. in Meteorology and Climate Science with First Class Honours from KNUST. My work focuses on sea ice and polar climate, hydroclimatology, and the evaluation of CMIP6 and reanalysis datasets—combining physical intuition with reproducible Python workflows and machine-learning methods for Earth system science.
+            I am an atmospheric and climate data scientist, recently graduated with an M.Sc. in Atmospheric and Oceanic Sciences from McGill University. I also hold a B.Sc. in Meteorology and Climate Science with First Class Honours from KNUST. My interests span atmospheric, oceanic, climate, and Earth system science—from weather systems, air quality, hydroclimatology, and climate–health interactions to polar and marine environments. I use observations, remote sensing, reanalysis, numerical models, and reproducible data-science methods to investigate environmental questions across regions and scales.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
