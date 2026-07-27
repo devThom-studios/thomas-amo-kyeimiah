@@ -494,7 +494,7 @@ export function WeatherWidget() {
       </div>
 
       {/* Search */}
-      <div className="mt-5 relative">
+      <div className="mt-5 relative z-10">
         <label htmlFor="weather-city" className="sr-only">
           Search for a city
         </label>
@@ -561,7 +561,7 @@ export function WeatherWidget() {
       </div>
 
       {/* Status region */}
-      <div className="mt-6" aria-live="polite" aria-busy={loading}>
+      <div className="mt-6 relative" aria-live="polite" aria-busy={loading}>
         {loading && !forecast && (
           <p className="text-sm text-muted-foreground">Loading forecast…</p>
         )}
@@ -616,7 +616,7 @@ export function WeatherWidget() {
 
       {/* 5-day */}
       {forecast && (
-        <div className="mt-8">
+        <div className="mt-8 relative">
           <div className="flex items-baseline justify-between">
             <p className="eyebrow">Next 5 days</p>
             {lastSuccessAt && (
@@ -671,7 +671,7 @@ export function WeatherWidget() {
         </div>
       )}
 
-      <p className="mt-6 text-[11px] text-muted-foreground">
+      <p className="mt-6 relative text-[11px] text-muted-foreground">
         Weather data by{" "}
         <a
           href="https://open-meteo.com/"
