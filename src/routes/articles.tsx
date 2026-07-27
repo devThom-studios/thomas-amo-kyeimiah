@@ -13,9 +13,9 @@ export const Route = createFileRoute("/articles")({
       },
       { property: "og:title", content: "Articles — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Science communication and technical writing." },
-      { property: "og:url", content: "/articles" },
+      { property: "og:url", content: "https://kyeimiahlab.com/articles" },
     ],
-    links: [{ rel: "canonical", href: "/articles" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/articles" }],
   }),
   component: Articles,
 });
@@ -33,7 +33,7 @@ function Articles() {
         <ul className="divide-y divide-border border-y border-border">
           {ARTICLES.map((a) => (
             <li key={a.title} className="py-10">
-              <a href={a.href} className="group grid gap-4 md:grid-cols-[1fr_3fr] items-start">
+              <div className="grid gap-4 md:grid-cols-[1fr_3fr] items-start">
                 <div className="text-sm text-muted-foreground">
                   <p>{a.date}</p>
                   <p className="mt-1 font-mono text-xs uppercase tracking-widest text-accent">
@@ -42,17 +42,17 @@ function Articles() {
                   <p className="mt-1">{a.read}</p>
                 </div>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-serif text-navy-deep leading-snug group-hover:text-accent transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-serif text-navy-deep leading-snug">
                     {a.title}
                   </h2>
                   <p className="mt-4 text-base leading-relaxed text-foreground/85 max-w-2xl">
                     {a.excerpt}
                   </p>
-                  <p className="mt-4 text-sm text-navy-deep hover-underline inline-block">
-                    Read essay →
+                  <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+                    In preparation
                   </p>
                 </div>
-              </a>
+              </div>
             </li>
           ))}
         </ul>

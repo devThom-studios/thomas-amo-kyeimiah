@@ -12,9 +12,9 @@ export const Route = createFileRoute("/cv")({
       },
       { property: "og:title", content: "CV — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Education, appointments, publications, awards, and service." },
-      { property: "og:url", content: "/cv" },
+      { property: "og:url", content: "https://kyeimiahlab.com/cv" },
     ],
-    links: [{ rel: "canonical", href: "/cv" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/cv" }],
   }),
   component: CV,
 });

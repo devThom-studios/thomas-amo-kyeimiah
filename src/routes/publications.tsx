@@ -23,9 +23,9 @@ export const Route = createFileRoute("/publications")({
       },
       { property: "og:title", content: "Publications — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Journal articles, conference talks, theses, and posters." },
-      { property: "og:url", content: "/publications" },
+      { property: "og:url", content: "https://kyeimiahlab.com/publications" },
     ],
-    links: [{ rel: "canonical", href: "/publications" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/publications" }],
   }),
   component: Publications,
 });
