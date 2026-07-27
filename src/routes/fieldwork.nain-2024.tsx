@@ -26,6 +26,20 @@ export const Route = createFileRoute("/fieldwork/nain-2024")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://kyeimiahlab.com/fieldwork/nain-2024" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Nain Field Campaign — Nunatsiavut, Labrador",
+          datePublished: "2024-02-29",
+          author: { "@type": "Person", name: "Thomas Amo Kyeimiah", url: "https://kyeimiahlab.com/" },
+          image: `https://kyeimiahlab.com${NAIN_HERO.src}`,
+          mainEntityOfPage: "https://kyeimiahlab.com/fieldwork/nain-2024",
+        }),
+      },
+    ],
   }),
   component: NainFieldwork,
 });
