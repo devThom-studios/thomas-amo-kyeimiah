@@ -6,6 +6,7 @@ import { RESEARCH } from "@/data/site";
 import { Link } from "@tanstack/react-router";
 import { NAIN_FEATURE_IMAGE } from "@/data/nain-fieldwork";
 import { FigureLightbox } from "@/components/figure-lightbox";
+import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/research")({
   head: () => ({
@@ -46,9 +47,11 @@ function Research() {
       />
       <section className="container-prose py-16 md:py-24 space-y-24">
         {RESEARCH.map((r, i) => (
-          <article
+          <Reveal
+            as="article"
             key={r.slug}
             id={r.slug}
+            delayMs={i * 80}
             className="scroll-mt-24 grid gap-10 md:grid-cols-[5fr_7fr] items-start"
           >
             <div className={i % 2 === 1 ? "md:order-2" : ""}>
@@ -122,11 +125,12 @@ function Research() {
                 ))}
               </div>
             </div>
-          </article>
+          </Reveal>
         ))}
 
         {/* Fieldwork feature */}
-        <article
+        <Reveal
+          as="article"
           id="fieldwork"
           className="grid gap-10 md:grid-cols-[5fr_7fr] items-stretch border-t border-border pt-16"
         >
@@ -177,7 +181,7 @@ function Research() {
               </Link>
             </div>
           </div>
-        </article>
+        </Reveal>
       </section>
       <FigureLightbox
         src={openFigure?.src ?? null}

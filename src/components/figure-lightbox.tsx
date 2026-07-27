@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, ExternalLink } from "lucide-react";
 
 type Props = {
@@ -11,12 +11,26 @@ export function FigureLightbox({ src, alt, onClose }: Props) {
   const open = src !== null;
   const closeRef = useRef<HTMLButtonElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
+  const [closing, setClosing] = useState(false);
+
+  const requestClose = () => {
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      onClose();
+      return;
+    }
+    setClosing(true);
+    window.setTimeout(onClose, 180);
+  };
 
   useEffect(() => {
     if (!open) return;
+    setClosing(false);
     previouslyFocused.current = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") requestClose();
     };
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
@@ -27,7 +41,8 @@ export function FigureLightbox({ src, alt, onClose }: Props) {
       document.body.style.overflow = prevOverflow;
       previouslyFocused.current?.focus?.();
     };
-  }, [open, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   if (!open || !src) return null;
 
@@ -36,8 +51,10 @@ export function FigureLightbox({ src, alt, onClose }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label={alt}
-      className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm overflow-auto"
-      onClick={onClose}
+      className={`fixed inset-0 z-50 bg-black/85 backdrop-blur-sm overflow-auto lightbox-backdrop-in ${
+        closing ? "opacity-0 transition-opacity duration-200" : ""
+      }`}
+      onClick={requestClose}
     >
       <div className="sticky top-0 z-10 flex items-center justify-end gap-2 p-3 sm:p-4">
         <a
@@ -53,7 +70,7 @@ export function FigureLightbox({ src, alt, onClose }: Props) {
         <button
           ref={closeRef}
           type="button"
-          onClick={(e) => { e.stopPropagation(); onClose(); }}
+          onClick={(e) => { e.stopPropagation(); requestClose(); }}
           className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/10 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white"
           aria-label="Close figure"
         >
@@ -61,7 +78,9 @@ export function FigureLightbox({ src, alt, onClose }: Props) {
         </button>
       </div>
       <figure
-        className="min-h-[calc(100dvh-4.5rem)] flex items-center justify-center p-4 sm:p-8"
+        className={`min-h-[calc(100dvh-4.5rem)] flex items-center justify-center p-4 sm:p-8 ${
+          closing ? "opacity-0 scale-95 transition-all duration-200" : "lightbox-figure-in"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <img

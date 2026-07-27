@@ -38,6 +38,7 @@ function isNavActive(navTo: string, pathname: string): boolean {
 }
 
 export function SiteLayout({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <a
@@ -47,7 +48,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
       <SiteHeader />
-      <main id="main" className="flex-1">{children}</main>
+      <main id="main" className="flex-1">
+        <div key={pathname} className="route-transition">
+          {children}
+        </div>
+      </main>
       <SiteFooter />
     </div>
   );
