@@ -13,9 +13,9 @@ export const Route = createFileRoute("/projects")({
       },
       { property: "og:title", content: "Projects — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Open-source scientific software and computational projects." },
-      { property: "og:url", content: "/projects" },
+      { property: "og:url", content: "https://kyeimiahlab.com/projects" },
     ],
-    links: [{ rel: "canonical", href: "/projects" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/projects" }],
   }),
   component: Projects,
 });

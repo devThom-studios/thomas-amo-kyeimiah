@@ -60,7 +60,7 @@ function Home() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               to="/cv"
-              className="inline-flex items-center gap-2 rounded-md bg-navy-deep text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-navy transition-colors"
+              className="inline-flex items-center gap-2 rounded-md bg-ivory text-navy-deep px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-white transition-colors"
             >
               Curriculum Vitae
               <span aria-hidden>→</span>

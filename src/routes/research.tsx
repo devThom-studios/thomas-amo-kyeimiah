@@ -14,13 +14,17 @@ export const Route = createFileRoute("/research")({
       {
         name: "description",
         content:
-          "Active research on the West African monsoon, SST teleconnections, and machine-learned atmospheric boundary-layer physics.",
+          "Research projects on sea-ice projection in Nunatsiavut (Labrador), CMIP6 sea-ice evaluation with ECCC, and climate–health interactions across Ghana's agro-ecological zones.",
       },
       { property: "og:title", content: "Research — Thomas Amo Kyeimiah" },
-      { property: "og:description", content: "Active research projects, methods, datasets, and results." },
-      { property: "og:url", content: "/research" },
+      {
+        property: "og:description",
+        content:
+          "Research on sea-ice projection in Nunatsiavut, CMIP6 sea-ice evaluation, and climate–health interactions in Ghana — with methods, datasets, and results.",
+      },
+      { property: "og:url", content: "https://kyeimiahlab.com/research" },
     ],
-    links: [{ rel: "canonical", href: "/research" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/research" }],
   }),
   component: Research,
 });

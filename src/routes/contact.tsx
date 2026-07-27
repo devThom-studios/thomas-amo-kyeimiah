@@ -14,9 +14,9 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:title", content: "Contact — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Get in touch about research, teaching, or writing." },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://kyeimiahlab.com/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/contact" }],
   }),
   component: Contact,
 });
@@ -106,12 +106,22 @@ function Contact() {
           className="rounded-md border border-border bg-card p-8 space-y-5"
           onSubmit={handleSubmit}
         >
+          {/* Honeypot — hidden from real users; bots that fill it get filtered. */}
+          <input
+            type="text"
+            name="_gotcha"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="hidden"
+          />
           <div>
             <label htmlFor="name" className="eyebrow block mb-2">Name</label>
             <input
               id="name"
               name="name"
               required
+              autoComplete="name"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
@@ -122,6 +132,8 @@ function Contact() {
               type="email"
               name="email"
               required
+              autoComplete="email"
+              inputMode="email"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-ring"
             />
           </div>

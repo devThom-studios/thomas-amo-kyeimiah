@@ -14,9 +14,9 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:title", content: "About — Thomas Amo Kyeimiah" },
       { property: "og:description", content: "Biography, training, and research philosophy." },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://kyeimiahlab.com/about" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://kyeimiahlab.com/about" }],
   }),
   component: About,
 });
