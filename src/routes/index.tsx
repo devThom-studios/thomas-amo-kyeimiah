@@ -8,18 +8,6 @@ import { HeroAtmosphere } from "@/components/hero-atmosphere";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
-      {
-        name: "description",
-        content:
-          "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing.",
-      },
-      { property: "og:title", content: "Thomas Amo Kyeimiah | Atmospheric & Climate Scientist" },
-      {
-        property: "og:description",
-        content:
-          "Atmospheric and climate scientist working across polar climate, hydroclimatology, climate–health interactions, Earth system data science, and reproducible scientific computing.",
-      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://kyeimiahlab.com/" },
       { property: "og:image", content: "https://kyeimiahlab.com/og-image.png" },
@@ -55,6 +43,9 @@ function Home() {
           <p className="eyebrow text-white">Atmospheric & Climate Science · Earth System Data Science</p>
           <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl text-ivory drop-shadow-[0_2px_20px_rgba(10,20,40,0.6)]">
             Thomas Amo Kyeimiah
+            <span className="block mt-3 text-2xl md:text-3xl font-serif font-light text-ivory/90">
+              Atmospheric &amp; Climate Scientist
+            </span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ivory/90">
             I am an atmospheric and climate data scientist, recently graduated with an M.Sc. in Atmospheric and Oceanic Sciences from McGill University. I also hold a B.Sc. in Meteorology and Climate Science with First Class Honours from KNUST. My interests span atmospheric, oceanic, climate, and Earth system science. I use observations, remote sensing, reanalysis, numerical models, and reproducible computational methods to investigate weather, climate, and environmental processes across regions and scales.
