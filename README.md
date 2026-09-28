@@ -1,60 +1,58 @@
-# Thomas Amo Kyeimiah: Research Hub
+# Thomas Amo Kyeimiah | Research Hub
 
-Build a premium research website for Thomas Amo Kyeimiah, an atmospheric scientist and climate data scientist. This should feel like the personal website of a researcher at MIT, Stanford, NASA, or ETH Zurich—not a startup landing page or generic portfolio.
+**Atmospheric science · Climate data science · Scientific computing**
 
-The design should be elegant, minimal, modern, and highly professional with smooth animations, excellent typography, and subtle atmospheric-inspired colors (deep navy, white, soft blues, and light grays).
+Source code for my personal research website, bringing together my research, computational projects, publications, teaching, and science communication.
 
-Create the following pages:
+My work combines observations, climate model output, and computational methods to investigate the atmosphere and climate system. My interests include extreme weather, hydroclimate, machine learning, and geospatial analysis.
 
- Home
+**[Visit the website](https://kyeimiahlab.com)** · **[GitHub profile](https://github.com/devThom-studios)**
 
- About
+## Research interests
 
- Research
+- Atmospheric processes, climate variability, and climate change
+- Extreme precipitation, flooding, drought, and climate risk
+- Climate modeling and model–observation comparison
+- Machine learning and data science for environmental applications
+- Remote sensing, geospatial analysis, and scientific visualization
 
- Publications
+## Website sections
 
- Projects
+| Section | Focus |
+| --- | --- |
+| Home | Research overview and featured work |
+| About | Academic background, experience, and research interests |
+| Research | Research questions, methods, datasets, and findings |
+| Publications | Journal articles, conference contributions, theses, and posters |
+| Projects | Computational work in Python, climate modeling, machine learning, and geospatial analysis |
+| Teaching | Teaching experience and educational activities |
+| Articles | Science communication and technical writing |
+| CV | Academic curriculum vitae |
+| Contact | Research inquiries and collaboration |
 
- Teaching
+## Design approach
 
- Articles
+The website emphasizes readable typography, clear navigation, and a restrained palette inspired by the atmosphere. Accessibility, responsive layouts, and search discoverability guide its design.
 
- CV
+## Local development
 
- Contact
-
-The homepage should include a hero section with my name, a short research statement, research interests, featured research projects, latest publication, and buttons linking to my CV, GitHub, LinkedIn, and Google Scholar.
-
-The Research page should present projects as visually rich cards with figures, methods, datasets, results, and links to code and publications.
-
-The Publications page should support journal articles, conference presentations, theses, and posters.
-
-The Projects page should showcase computational work involving Python, climate modeling, machine learning, geospatial analysis, and visualization.
-
-The Articles page should support science communication and technical blog posts.
-
-The overall experience should prioritize readability, professionalism, accessibility, responsiveness, and SEO. Avoid flashy startup aesthetics or excessive marketing language. The website should immediately communicate credibility to PhD supervisors, university faculty, and research collaborators.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://thomas-amo-kyeimiah.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3acda849-142d-4289-944e-ced9f46e4477).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Install Node.js and npm, then run:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone https://github.com/devThom-studios/thomas-amo-kyeimiah.git
+cd thomas-amo-kyeimiah
+npm install
 npm run dev
 ```
+
+Open the local URL shown in your terminal to preview the website. Refer to `package.json` for the project's available scripts and dependencies.
+
+## Editing with Lovable
+
+This website was built with [Lovable](https://lovable.dev).
+
+Open the [Lovable project editor](https://lovable.dev/projects/3acda849-142d-4289-944e-ced9f46e4477) to continue developing the site. Changes made in Lovable sync to this repository, and changes pushed to the connected branch sync back into Lovable.
+
+## Contact
+
+For research inquiries or collaboration, visit the Contact section at [kyeimiahlab.com](https://kyeimiahlab.com).
