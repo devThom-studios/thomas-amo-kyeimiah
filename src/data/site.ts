@@ -209,39 +209,60 @@ export const PROJECTS = [
 export const AI_APPS = [
   {
     name: "first-to-three",
-    title: "Penalty Duel / First to Three",
-    tagline: "Multiplayer penalty shootout — first to three wins",
+    title: "First to Three — Multiplayer Penalty Duel",
+    tagline: "Head-to-head penalty shootout — first to three wins",
     description:
-      "A fast, head-to-head multiplayer penalty duel: pick your spot, beat the keeper, and race your rival to three goals. Built as an AI-assisted web game with instant, no-install play.",
+      "A competitive multiplayer penalty-shootout game where two players take turns shooting and defending. Features scoring, rematches, win/loss tracking and stadium sound effects, with a clean competitive interface designed for quick, fun play — no install required.",
     image: firstToThree.url,
     imageAlt:
       "Promotional artwork for First to Three, a multiplayer penalty duel game showing a striker shooting against a diving goalkeeper in a stadium.",
     href: "https://first-to-three-thomas.atkyeimiah.chatgpt.site",
-    stack: ["Web game", "Multiplayer", "AI-assisted build"],
+    stack: [
+      "React",
+      "JavaScript",
+      "Multiplayer game logic",
+      "State management",
+      "Sound integration",
+      "Responsive design",
+    ],
   },
   {
     name: "light-cycles",
-    title: "Light Cycles: Race to Five",
+    title: "Light Cycles — Race to Five",
     tagline: "Neon light-cycle racing — think fast, stay alive",
     description:
-      "A neon light-cycle duel where two riders leave glowing trails on a grid. Outmanoeuvre your opponent and be the first to five rounds in this quick, arcade-style racing game.",
+      "A fast-paced two-player light-cycle game where players compete to reach five wins first. Choose your arena, adjust the game speed, track match scores, and play across different map shapes and environments with real-time collision handling.",
     image: lightCycles.url,
     imageAlt:
       "Promotional artwork for Light Cycles: Race to Five, showing two neon light-cycle riders with glowing blue and orange trails on a dark grid track.",
     href: "https://light-cycles.atkyeimiah.chatgpt.site",
-    stack: ["Web game", "Arcade racing", "AI-assisted build"],
+    stack: [
+      "React",
+      "JavaScript",
+      "Collision detection",
+      "Real-time interaction",
+      "Game mechanics",
+      "Responsive design",
+    ],
   },
   {
     name: "climatewindow",
-    title: "ClimateWindow: Weather Now, Climate Tomorrow",
+    title: "ClimateWindow — Weather Now, Climate Tomorrow",
     tagline: "Interactive weather and long-term climate insights",
     description:
-      "An interactive platform to explore current weather and long-term climate information anywhere in the world — live conditions, climate averages and extremes, and an interactive map built on the climate-data skills behind this site.",
+      "An interactive weather and climate exploration platform: search for any location or click directly on the map to view current weather, forecasts and longer-term climate information. Combines interactive mapping, climate data visualization and an accessible interface.",
     image: climateWindow.url,
     imageAlt:
       "Promotional artwork for ClimateWindow, showing a laptop with an interactive world weather map and a climate insights panel for Montréal.",
     href: "https://climatewindow.atkyeimiah.chatgpt.site",
-    stack: ["Weather & climate data", "Interactive map", "Web app"],
+    stack: [
+      "React",
+      "Interactive mapping",
+      "Geospatial apps",
+      "Climate data visualization",
+      "API integration",
+      "Responsive design",
+    ],
   },
 ] as const;
 
