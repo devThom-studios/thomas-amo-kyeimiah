@@ -1,3 +1,6 @@
+import firstToThree from "@/assets/apps/first-to-three.png.asset.json";
+import lightCycles from "@/assets/apps/light-cycles.png.asset.json";
+import climateWindow from "@/assets/apps/climatewindow.png.asset.json";
 import seaice from "@/assets/research/Fig4_ensemble_mean.jpg.asset.json";
 import cmip6 from "@/assets/research/CMIP6_bias_assessment.png.asset.json";
 import malaria from "@/assets/research/Ghana_monthly_vectorial_capacity.jpg.asset.json";
@@ -200,6 +203,45 @@ export const PROJECTS = [
       "Mini-project completed at ICTP (supervised by Prof. Paul Kushner) using CESM-WACCM4 PAMIP experiments to explore precipitation response to sea-ice loss and CO₂ doubling.",
     stack: ["CESM-WACCM4", "Python", "Xarray", "CDO"],
     href: undefined,
+  },
+] as const;
+
+export const AI_APPS = [
+  {
+    name: "first-to-three",
+    title: "Penalty Duel / First to Three",
+    tagline: "Multiplayer penalty shootout — first to three wins",
+    description:
+      "A fast, head-to-head multiplayer penalty duel: pick your spot, beat the keeper, and race your rival to three goals. Built as an AI-assisted web game with instant, no-install play.",
+    image: firstToThree.url,
+    imageAlt:
+      "Promotional artwork for First to Three, a multiplayer penalty duel game showing a striker shooting against a diving goalkeeper in a stadium.",
+    href: "https://first-to-three-thomas.atkyeimiah.chatgpt.site",
+    stack: ["Web game", "Multiplayer", "AI-assisted build"],
+  },
+  {
+    name: "light-cycles",
+    title: "Light Cycles: Race to Five",
+    tagline: "Neon light-cycle racing — think fast, stay alive",
+    description:
+      "A neon light-cycle duel where two riders leave glowing trails on a grid. Outmanoeuvre your opponent and be the first to five rounds in this quick, arcade-style racing game.",
+    image: lightCycles.url,
+    imageAlt:
+      "Promotional artwork for Light Cycles: Race to Five, showing two neon light-cycle riders with glowing blue and orange trails on a dark grid track.",
+    href: "https://light-cycles.atkyeimiah.chatgpt.site",
+    stack: ["Web game", "Arcade racing", "AI-assisted build"],
+  },
+  {
+    name: "climatewindow",
+    title: "ClimateWindow: Weather Now, Climate Tomorrow",
+    tagline: "Interactive weather and long-term climate insights",
+    description:
+      "An interactive platform to explore current weather and long-term climate information anywhere in the world — live conditions, climate averages and extremes, and an interactive map built on the climate-data skills behind this site.",
+    image: climateWindow.url,
+    imageAlt:
+      "Promotional artwork for ClimateWindow, showing a laptop with an interactive world weather map and a climate insights panel for Montréal.",
+    href: "https://climatewindow.atkyeimiah.chatgpt.site",
+    stack: ["Weather & climate data", "Interactive map", "Web app"],
   },
 ] as const;
 
