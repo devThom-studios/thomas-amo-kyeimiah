@@ -240,25 +240,25 @@
   &[data-visible="true"] { opacity: 1; transform: translateY(0); }
 }
 
-/* Home hero — the photo itself breathes: a very slow Ken Burns
-   zoom + drift, so the panorama feels alive without distraction. */
+/* Home hero — the photo itself breathes: a slow Ken Burns
+   zoom + drift + tilt, clearly visible but never jarring. */
 @keyframes hero-photo-drift {
-  from { transform: scale(1.02) translate3d(-0.8%, 0.4%, 0); }
-  to   { transform: scale(1.12) translate3d(0.8%, -0.6%, 0); }
+  from { transform: scale(1.08) translate3d(-2.4%, 1.4%, 0) rotate(0.45deg); }
+  to   { transform: scale(1.30) translate3d(2.4%, -1.4%, 0) rotate(-0.45deg); }
 }
-.hero-photo { animation: hero-photo-drift 45s ease-in-out infinite alternate; will-change: transform; }
+.hero-photo { animation: hero-photo-drift 20s ease-in-out infinite alternate; will-change: transform; }
 
-/* Home hero — slow atmospheric contour drift */
+/* Home hero — atmospheric contour drift */
 @keyframes atmos-drift-a {
-  from { transform: translate3d(-4%, 0, 0); }
-  to   { transform: translate3d(4%, 0, 0); }
+  from { transform: translate3d(-9%, 1%, 0); }
+  to   { transform: translate3d(9%, -1%, 0); }
 }
 @keyframes atmos-drift-b {
-  from { transform: translate3d(5%, 1%, 0); }
-  to   { transform: translate3d(-5%, -1%, 0); }
+  from { transform: translate3d(11%, 2%, 0); }
+  to   { transform: translate3d(-11%, -2%, 0); }
 }
-.atmos-layer-a { animation: atmos-drift-a 60s ease-in-out infinite alternate; }
-.atmos-layer-b { animation: atmos-drift-b 90s ease-in-out infinite alternate; }
+.atmos-layer-a { animation: atmos-drift-a 32s ease-in-out infinite alternate; }
+.atmos-layer-b { animation: atmos-drift-b 46s ease-in-out infinite alternate; }
 
 /* Lightbox entrance/exit */
 @keyframes lightbox-backdrop-in {
