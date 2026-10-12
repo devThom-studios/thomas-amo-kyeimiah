@@ -90,17 +90,23 @@ function Home() {
       <section className="container-prose py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div>
-            <p className="eyebrow">Research interests</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Questions I work on</h2>
+            <h2 className="text-3xl md:text-4xl">Research interests</h2>
           </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-lg text-foreground/85">
-            {RESEARCH_INTERESTS.map((r) => (
-              <li key={r} className="flex gap-3 border-t border-border pt-3">
-                <span className="text-accent select-none">§</span>
-                <span>{r}</span>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-lg text-foreground/85">
+              {RESEARCH_INTERESTS.map((r) => (
+                <li key={r} className="flex gap-3 border-t border-border pt-3">
+                  <span className="text-accent select-none">§</span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              I use Python, statistical analysis, geospatial methods, and
+              reproducible scientific computing to investigate climate processes
+              and environmental change.
+            </p>
+          </div>
         </div>
       </section>
 

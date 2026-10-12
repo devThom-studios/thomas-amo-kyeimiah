@@ -341,17 +341,13 @@ export const ARTICLES = [
 ];
 
 export const RESEARCH_INTERESTS = [
-  "Extreme weather and precipitation in a changing climate",
-  "Climate variability and regional hydroclimate",
-  "Weather and climate prediction using models, observations, and data-driven methods",
-  "High latitude climate and climate variability",
-  "Hydroclimatology and climate diagnostics",
-  "Machine learning and Explainable AI for Earth system science",
-  "Air quality",
-  "Climate model evaluation and bias analysis",
-  "Synoptic and mesoscale meteorology",
+  "Climate variability, extreme weather, and hydroclimate",
+  "Machine learning and explainable AI for weather and climate",
+  "Climate-model evaluation using observations and reanalysis",
+  "Polar climate and sea-ice change",
   "Climate–health interactions",
-  "Geospatial and reproducible scientific computing",
+  "Air quality and dispersion meteorology",
+  "Geospatial analysis and reproducible scientific computing",
 ];
 
 export const SOCIALS = {
