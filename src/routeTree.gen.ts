@@ -18,6 +18,7 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StatsRouteImport } from './routes/stats'
 import { Route as TeachingRouteImport } from './routes/teaching'
 import { Route as FieldworkNain2024RouteImport } from './routes/fieldwork.nain-2024'
 
@@ -66,6 +67,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StatsRoute = StatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeachingRoute = TeachingRouteImport.update({
   id: '/teaching',
   path: '/teaching',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stats': typeof StatsRoute
   '/teaching': typeof TeachingRoute
   '/fieldwork/nain-2024': typeof FieldworkNain2024Route
 }
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stats': typeof StatsRoute
   '/teaching': typeof TeachingRoute
   '/fieldwork/nain-2024': typeof FieldworkNain2024Route
 }
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stats': typeof StatsRoute
   '/teaching': typeof TeachingRoute
   '/fieldwork/nain-2024': typeof FieldworkNain2024Route
 }
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/stats'
     | '/teaching'
     | '/fieldwork/nain-2024'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/stats'
     | '/teaching'
     | '/fieldwork/nain-2024'
   id:
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/stats'
     | '/teaching'
     | '/fieldwork/nain-2024'
   fileRoutesById: FileRoutesById
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StatsRoute: typeof StatsRoute
   TeachingRoute: typeof TeachingRoute
   FieldworkNain2024Route: typeof FieldworkNain2024Route
 }
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stats': {
+      id: '/stats'
+      path: '/stats'
+      fullPath: '/stats'
+      preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/teaching': {
       id: '/teaching'
       path: '/teaching'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StatsRoute: StatsRoute,
   TeachingRoute: TeachingRoute,
   FieldworkNain2024Route: FieldworkNain2024Route,
 }
