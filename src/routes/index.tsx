@@ -35,11 +35,12 @@ function Home() {
           fetchPriority="high"
           className="hero-photo absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-[70%_45%]"
         />
-        {/* Lighter vertical wash so the moving panorama actually reads,
-            plus a left scrim that keeps the headline and paragraph crisp. */}
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-navy-deep/45 to-navy-deep/30" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy-deep/75 to-navy-deep/35 md:to-transparent" />
-        <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay" />
+        {/* Vertical wash stays strong on small screens where the text spans
+            the full width, and thins out on desktop so the panorama reads. */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/80 via-navy-deep/60 to-navy-deep/45 md:from-navy-deep/45 md:via-navy-deep/10 md:to-navy-deep/25" />
+        {/* Directional scrim: deep behind the words, the photo left vivid on the right. */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy-deep/80 to-navy-deep/40 md:via-navy-deep/55 md:to-transparent" />
+        <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay md:opacity-[0.12]" />
         <HeroAtmosphere />
         <div className="container-prose relative py-24 md:py-36 fade-up">
           <p className="eyebrow text-white">Atmospheric & Climate Science · Earth System Data Science</p>
