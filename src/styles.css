@@ -243,22 +243,22 @@
 /* Home hero — the photo itself breathes: a slow Ken Burns
    zoom + drift + tilt, clearly visible but never jarring. */
 @keyframes hero-photo-drift {
-  from { transform: scale(1.18) translate3d(-4%, 2.4%, 0) rotate(1.2deg); }
-  to   { transform: scale(1.46) translate3d(4%, -2.4%, 0) rotate(-1.2deg); }
+  from { transform: scale(1.24) translate3d(-7%, 4.5%, 0) rotate(1.2deg); }
+  to   { transform: scale(1.50) translate3d(7%, -4.5%, 0) rotate(-1.2deg); }
 }
-.hero-photo { animation: hero-photo-drift 10s ease-in-out infinite alternate; will-change: transform; }
+.hero-photo { animation: hero-photo-drift 8s ease-in-out infinite alternate; will-change: transform; }
 
 /* Home hero — atmospheric contour drift */
 @keyframes atmos-drift-a {
-  from { transform: translate3d(-12%, 2.5%, 0); }
-  to   { transform: translate3d(12%, -2.5%, 0); }
+  from { transform: translate3d(-14%, 3%, 0); }
+  to   { transform: translate3d(14%, -3%, 0); }
 }
 @keyframes atmos-drift-b {
-  from { transform: translate3d(10%, 3%, 0); }
-  to   { transform: translate3d(-10%, -3%, 0); }
+  from { transform: translate3d(12%, 4%, 0); }
+  to   { transform: translate3d(-12%, -4%, 0); }
 }
-.atmos-layer-a { animation: atmos-drift-a 14s ease-in-out infinite alternate; }
-.atmos-layer-b { animation: atmos-drift-b 18s ease-in-out infinite alternate; }
+.atmos-layer-a { animation: atmos-drift-a 12s ease-in-out infinite alternate; }
+.atmos-layer-b { animation: atmos-drift-b 15s ease-in-out infinite alternate; }
 
 /* Lightbox entrance/exit */
 @keyframes lightbox-backdrop-in {
