@@ -8,6 +8,13 @@
       "when": 1791781386124,
       "tag": "0000_create_page_views",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791781455558,
+      "tag": "0001_get_site_stats_function",
+      "breakpoints": true
     }
   ]
 }
