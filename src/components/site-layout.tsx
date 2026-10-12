@@ -179,8 +179,8 @@ function SiteFooter() {
           <p className="font-serif text-lg text-navy-deep">Thomas Amo Kyeimiah</p>
           <p className="text-muted-foreground mt-2 leading-relaxed">
             Atmospheric and climate data scientist. M.Sc., McGill University.
-            Sea-ice and polar climate, hydroclimatology, and reproducible
-            Python workflows for Earth system science.
+            Extreme weather and precipitation, regional hydroclimate, and
+            reproducible Python workflows for Earth system science.
           </p>
         </div>
         <div>
