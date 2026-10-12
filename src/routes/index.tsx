@@ -43,14 +43,14 @@ function Home() {
         <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay md:opacity-[0.12]" />
         <HeroAtmosphere />
         <div className="container-prose relative py-24 md:py-36 fade-up">
-          <p className="eyebrow text-white">Atmospheric & Climate Science · Earth System Data Science</p>
-          <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl text-ivory drop-shadow-[0_2px_20px_rgba(10,20,40,0.6)]">
+          <p className="eyebrow text-white drop-shadow-[0_1px_10px_rgba(10,20,40,0.9)]">Atmospheric & Climate Science · Earth System Data Science</p>
+          <h1 className="mt-6 text-5xl md:text-7xl leading-[1.02] max-w-4xl text-ivory drop-shadow-[0_2px_26px_rgba(10,20,40,0.95)]">
             Thomas Amo Kyeimiah
             <span className="block mt-3 text-2xl md:text-3xl font-serif font-light text-ivory/90">
               Atmospheric &amp; Climate Scientist
             </span>
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ivory/90">
+          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ivory/90 drop-shadow-[0_1px_16px_rgba(10,20,40,0.95)]">
             I am an atmospheric and climate data scientist, recently graduated with an M.Sc. in Atmospheric and Oceanic Sciences from McGill University. I also hold a B.Sc. in Meteorology and Climate Science with First Class Honours from KNUST. My interests span atmospheric, oceanic, climate, and Earth system science. I use observations, remote sensing, reanalysis, numerical models, and reproducible computational methods to investigate weather, climate, and environmental processes across regions and scales.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
