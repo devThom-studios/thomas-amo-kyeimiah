@@ -65,7 +65,7 @@ export function HeroAtmosphere() {
     >
       {/* Contour lines — slow horizontal drift */}
       <svg
-        className="atmos-layer-a absolute -inset-x-10 inset-y-0 w-[120%] h-full opacity-[0.22] mix-blend-screen"
+        className="atmos-layer-a absolute -inset-x-10 inset-y-0 w-[120%] h-full opacity-[0.38] mix-blend-screen"
         viewBox="0 0 1200 600"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@ export function HeroAtmosphere() {
       </svg>
       {/* Translucent cloud layer — opposite slow drift */}
       <svg
-        className="atmos-layer-b absolute -inset-x-16 inset-y-0 w-[130%] h-full opacity-[0.14] mix-blend-screen"
+        className="atmos-layer-b absolute -inset-x-16 inset-y-0 w-[130%] h-full opacity-[0.26] mix-blend-screen"
         viewBox="0 0 1200 600"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
