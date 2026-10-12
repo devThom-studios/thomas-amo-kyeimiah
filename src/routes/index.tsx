@@ -101,7 +101,7 @@ function Home() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-2xl text-base italic leading-relaxed text-muted-foreground">
               I use Python, statistical analysis, geospatial methods, and
               reproducible scientific computing to investigate climate processes
               and environmental change.
