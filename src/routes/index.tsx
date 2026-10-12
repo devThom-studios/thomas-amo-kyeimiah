@@ -33,7 +33,7 @@ function Home() {
           alt=""
           aria-hidden
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-[70%_45%]"
+          className="hero-photo absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-[70%_45%]"
         />
         {/* Consistent navy overlay — same treatment as the Nain hero. */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
