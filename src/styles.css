@@ -240,6 +240,14 @@
   &[data-visible="true"] { opacity: 1; transform: translateY(0); }
 }
 
+/* Home hero — the photo itself breathes: a very slow Ken Burns
+   zoom + drift, so the panorama feels alive without distraction. */
+@keyframes hero-photo-drift {
+  from { transform: scale(1.02) translate3d(-0.8%, 0.4%, 0); }
+  to   { transform: scale(1.12) translate3d(0.8%, -0.6%, 0); }
+}
+.hero-photo { animation: hero-photo-drift 45s ease-in-out infinite alternate; will-change: transform; }
+
 /* Home hero — slow atmospheric contour drift */
 @keyframes atmos-drift-a {
   from { transform: translate3d(-4%, 0, 0); }
@@ -297,6 +305,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; }
+  .hero-photo,
   .atmos-layer-a, .atmos-layer-b,
   .lightbox-backdrop-in, .lightbox-figure-in,
   .wx-sun-glow, .wx-cloud-a, .wx-cloud-b,
