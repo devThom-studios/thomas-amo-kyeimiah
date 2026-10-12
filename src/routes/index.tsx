@@ -35,8 +35,10 @@ function Home() {
           fetchPriority="high"
           className="hero-photo absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-[70%_45%]"
         />
-        {/* Consistent navy overlay — same treatment as the Nain hero. */}
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/70 to-navy-deep/40" />
+        {/* Lighter vertical wash so the moving panorama actually reads,
+            plus a left scrim that keeps the headline and paragraph crisp. */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-navy-deep/45 to-navy-deep/30" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy-deep/75 to-navy-deep/35 md:to-transparent" />
         <div aria-hidden className="absolute inset-0 pointer-events-none atmosphere-contours opacity-25 mix-blend-overlay" />
         <HeroAtmosphere />
         <div className="container-prose relative py-24 md:py-36 fade-up">
