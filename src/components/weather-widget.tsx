@@ -16,6 +16,7 @@ import {
   Thermometer,
   MapPin,
   RefreshCw,
+  Search,
   type LucideIcon,
 } from "lucide-react";
 import { WeatherAmbient } from "@/components/weather-ambient";
