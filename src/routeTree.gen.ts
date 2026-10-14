@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Fall2027_Thomas_KyeimiahDotpdfRouteImport } from './routes/Fall2027_Thomas_Kyeimiah[.]pdf'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -27,6 +28,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Fall2027_Thomas_KyeimiahDotpdfRoute =
+  Fall2027_Thomas_KyeimiahDotpdfRouteImport.update({
+    id: '/Fall2027_Thomas_Kyeimiah.pdf',
+    path: '/Fall2027_Thomas_Kyeimiah.pdf',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -85,6 +92,7 @@ const FieldworkNain2024Route = FieldworkNain2024RouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/Fall2027_Thomas_Kyeimiah.pdf': typeof Fall2027_Thomas_KyeimiahDotpdfRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRoute
   '/contact': typeof ContactRoute
@@ -99,6 +107,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/Fall2027_Thomas_Kyeimiah.pdf': typeof Fall2027_Thomas_KyeimiahDotpdfRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRoute
   '/contact': typeof ContactRoute
@@ -114,6 +123,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/Fall2027_Thomas_Kyeimiah.pdf': typeof Fall2027_Thomas_KyeimiahDotpdfRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRoute
   '/contact': typeof ContactRoute
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/Fall2027_Thomas_Kyeimiah.pdf'
     | '/about'
     | '/articles'
     | '/contact'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/Fall2027_Thomas_Kyeimiah.pdf'
     | '/about'
     | '/articles'
     | '/contact'
@@ -158,6 +170,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/Fall2027_Thomas_Kyeimiah.pdf'
     | '/about'
     | '/articles'
     | '/contact'
@@ -173,6 +186,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Fall2027_Thomas_KyeimiahDotpdfRoute: typeof Fall2027_Thomas_KyeimiahDotpdfRoute
   AboutRoute: typeof AboutRoute
   ArticlesRoute: typeof ArticlesRoute
   ContactRoute: typeof ContactRoute
@@ -193,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Fall2027_Thomas_Kyeimiah.pdf': {
+      id: '/Fall2027_Thomas_Kyeimiah.pdf'
+      path: '/Fall2027_Thomas_Kyeimiah.pdf'
+      fullPath: '/Fall2027_Thomas_Kyeimiah.pdf'
+      preLoaderRoute: typeof Fall2027_Thomas_KyeimiahDotpdfRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -277,6 +298,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Fall2027_Thomas_KyeimiahDotpdfRoute: Fall2027_Thomas_KyeimiahDotpdfRoute,
   AboutRoute: AboutRoute,
   ArticlesRoute: ArticlesRoute,
   ContactRoute: ContactRoute,
