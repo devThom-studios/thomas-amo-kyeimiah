@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /Fall2027_Thomas_Kyeimiah.pdf
 
 Sitemap: https://kyeimiahlab.com/sitemap.xml
